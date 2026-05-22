@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>온보딩</title>
+    <link rel="stylesheet" href="{% static 'css/onboarding.css' %}">
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+
+</head>
+
+<body>
+    <div class="main">
+        <div class="Frame_1">
+            <div class="Frame_2">
+                <div class="skip">
+                    <p class="skap">Skip</p>
+                </div>
+                <div class="text">
+                    <p class="Large_Title">흩어진 별조각을 모아, 우리들만의<br>별자리를 완성하다.</p>
+                </div>
+            </div>
+            <div class="ProgressDots">
+                <svg class="Ellipse_3" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"
+                    fill="none">
+                    <circle cx="5" cy="5" r="5" transform="matrix(-1 0 0 1 10 0)" fill="#F9F9F9" />
+                </svg>
+                <svg class="Ellipse_2" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"
+                    fill="none">
+                    <circle cx="5" cy="5" r="4.5" transform="matrix(-1 0 0 1 10 0)" stroke="#F9F9F9" />
+                </svg>
+                <svg class="Ellipse_1" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"
+                    fill="none">
+                    <circle cx="5" cy="5" r="4.5" transform="matrix(-1 0 0 1 10 0)" stroke="#F9F9F9" />
+                </svg>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+@font-face {
+    font-family: 'Cafe24ShiningStar';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Shiningstar.woff') format('woff');
+    font-weight: normal;
+    font-display: swap;
+}
+
+.main {
+    display: flex;
+    width: 375px;
+    overflow: hidden;
+    padding: 44px 16px;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #000428 0%, #004E92 100%);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Frame_1 {
+    display: flex;
+    width: 343px;
+    flex-direction: column;
+    align-items: center;
+    gap: 321px;
+}
+
+.Frame_2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 247px;
+    align-self: stretch;
+}
+
+.skip {
+    display: flex;
+    width: 44px;
+    height: 44px;
+    justify-content: center;
+    align-items: center;
+}
+
+.skap {
+    display: flex;
+    width: 44px;
+    height: 44px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--Gray-4, #BDBDBD);
+    font-family: Inter;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: -0.408px;
+    text-align: center;
+    font-feature-settings: 'liga' off, 'clig' off;
+}
+
+.text {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+}
+
+.Large_Title {
+    color: var(--Foundation-Violet-Light, #E8E8EE);
+    font-family: 'Cafe24Shiningstar';
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 41px;
+    letter-spacing: 0.374px;
+    text-align: center;
+    font-feature-settings: 'liga' off, 'clig' off;
+}
+
+.ProgressDots {
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    gap: 8px;
+}
+
+.Ellipse_1 {
+    stroke-width: 1px;
+    stroke: var(--, #F9F9F9);
+    width: 10px;
+    height: 10px;
+}
+
+.Ellipse_2 {
+    stroke-width: 1px;
+    stroke: var(--, #F9F9F9);
+    width: 10px;
+    height: 10px;
+}
+
+.Ellipse_3 {
+    fill: var(--, #F9F9F9);
+    width: 10px;
+    height: 10px;
+}

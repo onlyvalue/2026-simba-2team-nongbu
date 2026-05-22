@@ -17,8 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from app.views import mainpage
+from app.views import onboarding
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', mainpage),
+    path('onboarding/',onboarding),
 ]
