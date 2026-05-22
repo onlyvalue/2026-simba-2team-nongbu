@@ -1,2 +1,70 @@
 /* 전체 공통 스타일
 margin/padding 초기화, 폰트, 공통 색상 */
+
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* color variable */
+:root {
+    --white: #F9F9F9;
+    --gray-4: #BDBDBD;
+
+    --navy-dark: #000428;
+    --navy-light: #004E92;
+
+    --violet-normal: #1A1953;
+    --violet-light: #E8E8EE;
+}
+
+/* body */
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* mobile frame */
+.mobile-wrap {
+    width: 375px;
+    height: 812px;
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* main */
+.main {
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+    overflow: hidden;
+
+    border-radius: 30px;
+}
+
+/* a */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* button */
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    font: inherit;
+}
+
+/* img */
+img {
+    display: block;
+}

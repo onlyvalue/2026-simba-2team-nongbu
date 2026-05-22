@@ -22,6 +22,6 @@ from app.views import onboarding
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', mainpage),
-    path('onboarding/',onboarding),
+    path('', mainpage, name='mainpage'),
+    path('onboarding/',onboarding, name='onboarding'),
 ]
