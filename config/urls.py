@@ -26,6 +26,7 @@ from app.views import home_create_room2
 from app.views import home_join_room
 from app.views import login
 from app.views import signup
+from django.urls import include
 
 
 
@@ -39,8 +40,5 @@ urlpatterns = [
     path('home/create-room/1/', home_create_room1, name='home_create_room1'),
     path('home/create-room/2/', home_create_room2, name='home_create_room2'),
     path('home/join-room/', home_join_room, name='home_join_room'),
-    path('login/', login, name='login'),
-    path('signup/', signup, name='signup'),
-
-
+    path('accounts/', include('accounts.urls')),
 ]
