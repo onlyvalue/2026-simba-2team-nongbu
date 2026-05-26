@@ -31,6 +31,9 @@ def login(request):
 def signup(request):
     return render(request, 'auth/signup.html')
 
+def nickname_setup(request):
+    return render(request, 'auth/nickname_setup.html')
+
 def login(request):
     if request.method == "GET":
         return render(request, 'auth/login.html')

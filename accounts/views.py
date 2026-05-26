@@ -45,3 +45,6 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect("onboarding")
+
+def nickname_setup(request):
+    return render(request, "auth/nickname_setup.html")

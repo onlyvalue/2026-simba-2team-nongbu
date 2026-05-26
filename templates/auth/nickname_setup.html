@@ -6,14 +6,24 @@
 {% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet"
-      href="{% static 'css/페이지css경로.css' %}">
+<link rel="stylesheet" href="{% static 'css/auth/nickname_setup.css' %}">
+<link rel="stylesheet" href="{% static 'css/components/primary_button.css' %}">
 {% endblock %}
 
 {% block content %}
 
 <!-- 페이지 내용: 여기부터 코딩하면됨!! -->
-
+<div class="nickname-frame">
+      <div class="nickname-card">
+            <form action="{% url '' %}" method="POST" class="form-box" novalidate>
+                  <p>이제,<br>별조각을 심을 준비가<br>되셨나요?</p>
+                  {% csrf_token %}
+                  <input id="nickname" type="text" name="nickname" placeholder="닉네임을 입력하세요.">
+                  <label for="nickname">최대 10자까지 입력 가능합니다.</label>
+            </form>
+            <button class="primary-btn next-btn">다음</button>
+      </div>
+</div>
 {% endblock %}
 
 {% block extra_js %}
