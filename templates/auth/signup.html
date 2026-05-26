@@ -6,13 +6,55 @@
 {% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet"
-      href="{% static 'css/페이지css경로.css' %}">
+<link rel="stylesheet" href="{% static 'css/auth/signup.css' %}">
 {% endblock %}
 
 {% block content %}
 
 <!-- 페이지 내용: 여기부터 코딩하면됨!! -->
+<div class="signup-frame">
+      <div class="signup-main">
+            <div class="signup-card">
+                  <div class="signup-title">
+                        <p>회원가입</p>
+                        <p>계정을 만들어 시작해요</p>
+                  </div>
+                  <form action="{% url 'accounts:signup' %}" method="POST" class="form-box" novalidate>
+                        {% csrf_token %}
+                        <div class="form-group">
+                              <div class="form-id">
+                                    <div class="card-id">
+                                          <label for="signup-username">아이디</label>
+                                          <div class="input-id">
+                                                <input id="signup-username" type="text" name="username"
+                                                      placeholder="아이디">
+                                                <button class="check-btn">중복확인</button>
+                                          </div>
+                                    </div>
+                                    <p class="info">영문 소문자와 숫자만 사용하여, 영문 소문자로 시작하는 4~12자의<br>아이디를 입력해주세요</p>
+                              </div>
+                              <div class="form-pw">
+                                    <div class="card-pw">
+                                          <div class="input-pw">
+                                                <label for="signup-password">비밀번호</label>
+                                                <input id="signup-password" type="password" name="password"
+                                                      placeholder="비밀번호">
+                                          </div>
+                                          <input id="signup-password" type="password" name="password"
+                                                placeholder="비밀번호 확인">
+                                    </div>
+                                    <p class="info">8자리 이상, 특수문자를 포함한 비밀번호를 입력해주세요</p>
+                              </div>
+                        </div>
+                        <button type="submit" class="primary-button">
+                              <p>회원가입 완료</p>
+                              <img src="{% static 'images/ArrowRight.svg' %}">
+                        </button>
+                  </form>
+                  <p class="login">계정이 있으신가요? <a href="{% url 'accounts:login' %}">로그인</a></p>
+            </div>
+      </div>
+</div>
 
 {% endblock %}
 
