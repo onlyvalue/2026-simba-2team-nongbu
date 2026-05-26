@@ -110,15 +110,4 @@
     align-items: center;
     gap: 10px;
     align-self: stretch;
-    border-radius: 8px;
-    background: var(--Foundation-Violet-Light, #E8E8EE);
-    color: var(--Foundation-Violet-Normal, #1A1953);
-    font-feature-settings: 'liga' off, 'clig' off;
-
-    /* 버튼용 */
-    font-family: Inter;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 16px; /* 114.286% */
 }
