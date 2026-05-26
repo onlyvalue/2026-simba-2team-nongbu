@@ -1,0 +1,210 @@
+.signup-frame {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding: 93px 16px 93px 15px;
+    border-radius: 30px;
+    border: 1px solid #1A1953;
+    background: #F9F9F9;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-main {
+    display: flex;
+    width: 344px;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 24px;
+}
+
+.signup-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 83px;
+    align-self: stretch;
+}
+
+.signup-title {
+    display: flex;
+    width: 161px;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.signup-title p:nth-child(1) {
+    color: #09091D;
+    font-family: Inter;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 120%;
+    letter-spacing: -0.5px;
+    text-align: center;
+}
+
+.signup-title p:nth-child(2) {
+    color: #09091D;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+    text-align: center;
+}
+
+.form-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 24px;
+    align-self: stretch;
+}
+
+.form-group,
+.form-id,
+.card-id,
+.form-pw,
+.card-pw,
+.input-pw {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+}
+
+.form-group {
+    gap: 24px;
+}
+
+.form-id,
+.form-pw {
+    gap: 7px;
+}
+
+.card-id,
+.input-pw {
+    gap: 4px;
+}
+
+.card-pw {
+    gap: 11px;
+}
+
+.card-id label,
+.input-pw label {
+    color: #09091D;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 150%;
+}
+
+.input-id {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+
+.input-id input,
+#signup-password {
+    width: 100%;
+    height: 56px;
+    padding: 0 24px;
+    border-radius: 80px;
+    border: 1px solid #B8B8CA;
+    background: #F9F9F9;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    outline: none;
+}
+
+.input-id input {
+    width: 237px;
+}
+
+.input-id input::placeholder,
+#signup-password::placeholder {
+    color: #B8B8CA;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.check-btn {
+    display: flex;
+    width: 100px;
+    height: 56px;
+    padding: 16px 20px;
+    border-radius: 80px;
+    background: #B8B8CA;
+    justify-content: center;
+    align-items: center;
+
+    color: #FFF;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+
+    border: none;
+    cursor: pointer;
+}
+
+.info {
+    color: #F00;
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 24px;
+}
+
+.primary-button {
+    display: flex;
+    width: 344px;
+    height: 56px;
+    padding: 14px 28px;
+    border-radius: 20px;
+    background: #1A1953;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    border: none;
+    cursor: pointer;
+}
+
+.primary-button p {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 150%;
+}
+
+.primary-button img {
+    width: 16px;
+    height: 16px;
+}
+
+.login {
+    color: #09091D;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+    text-align: center;
+}
+
+.login a {
+    color: #09091D;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+    text-decoration: underline;
+}
