@@ -19,9 +19,11 @@
                   <p>이제,<br>별조각을 심을 준비가<br>되셨나요?</p>
                   {% csrf_token %}
                   <input id="nickname" type="text" name="nickname" placeholder="닉네임을 입력하세요.">
-                  <label for="nickname">최대 10자까지 입력 가능합니다.</label>
+                  {% if error %}
+                  <label for="nickname">{{error}}</label>
+                  {% endif %}
+                  <button class="primary-btn next-btn">다음</button>
             </form>
-            <button class="primary-btn next-btn">다음</button>
       </div>
 </div>
 {% endblock %}

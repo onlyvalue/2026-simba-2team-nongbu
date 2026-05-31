@@ -81,4 +81,27 @@ def logout(request):
     return redirect("onboarding")
 
 def nickname_setup(request):
-    return render(request, "auth/nickname_setup.html")
+    # 로그인 여부 확인
+    if not request.user.is_authenticated:
+        return redirect('accounts:login')
+
+    if request.method == "POST":
+        # 닉네임 가져오기
+        nickname = request.POST.get('nickname').strip()
+
+        # 닉네임 입력 여부 검사
+        if not nickname:
+            return render(request, 'auth/nickname_setup.html', {'error': '닉네임을 입력해주세요'})
+        # 닉네임 중복 여부 검사
+        if Profile.objects.filter(nickname=nickname).exists(): 
+            return render(request, "auth/nickname_setup.html", {'error': '이미 존재하는 닉네임입니다', 'nickname': nickname})
+        # 닉네임 유효성 검사
+        if len(nickname) > 10:
+            return render(request, 'auth/nickname_setup.html', {'error': '최대 10자까지 입력 가능합니다', 'nickname': nickname})
+        
+        profile = Profile.objects.get(user=request.user)
+        profile.nickname = nickname
+        profile.save()
+        return redirect('home_main')
+
+    return render(request, 'auth/nickname_setup.html')

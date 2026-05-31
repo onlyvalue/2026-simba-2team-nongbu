@@ -6,7 +6,7 @@ from django.dispatch import receiver
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
-    nickname = models.CharField(max_length=10)
+    nickname = models.CharField(max_length=10, blank=True)
 
 
 
