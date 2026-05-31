@@ -10,7 +10,7 @@ def signup(request):
         # 무슨 버튼 눌렀는지 확인
         check_action = request.POST.get('check_action')
         # 아이디 비밀번호 비밀번호 확인 가져오기 
-        username = request.POST.get('username')
+        username = request.POST.get('username').strip()
         password = request.POST.get('password')
         password_confirm = request.POST.get('password_confirm')
     
@@ -36,7 +36,7 @@ def signup(request):
                 return render(request, "auth/signup.html", {'error_ischeck': '아이디 중복검사를 먼저 진행해주세요', 'username': username})
             
             # 정규표현식으로 비밀번호 유효성 검사
-            if len(password) < 8 or not re.search(r"[!@#$%^&*(),.?\":{}|<>]", password): 
+            if len(password) < 8 or not re.search(r"[!@#$%^&*(),.?\":{}|<>]", password) or re.search(r"\s", password): 
                 return render(request, "auth/signup.html", {'password_error': '8자리 이상, 특수문자를 포함한 비밀번호를 입력해주세요', 'username': username, 'username_success': '사용 가능한 아이디입니다'})
 
             # 비밀번호 일치 여부 검사
