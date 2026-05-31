@@ -2,30 +2,64 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from django.shortcuts import render, redirect
 from .models import Profile
+import re
 
 def signup(request):
     
-    if request.method == "POST":
+    if request.method == "POST":    
+        # 무슨 버튼 눌렀는지 확인
+        check_action = request.POST.get('check_action')
+        # 아이디 비밀번호 비밀번호 확인 가져오기 
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        password_confirm = request.POST.get('password_confirm')
+    
+        # 아이디
+        if check_action == "check_username": 
+            # 정규표현식으로 아이디 유효성 검사
+            if not re.match(r'^[a-z][a-z0-9]{3,11}$', username):
+                return render(request, "auth/signup.html", {'username_error': '영문 소문자와 숫자만 사용하여, 영문 소문자로 시작하는 4~12자의\n아이디를 입력해주세요' , 'username': username})
 
-        if User.objects.filter(username=request.POST['username']).exists():
-            return render(request, "auth/signup.html", {'error': '이미 존재하는 아이디입니다.'})
+            # 아이디 중복 여부 검사
+            if User.objects.filter(username=username).exists(): 
+                return render(request, "auth/signup.html", {'username_duplicate_error': '이미 존재하는 아이디입니다', 'username': username})
+            
+            # 중복검사 통과하면 아이디 저장
+            else:
+                request.session['checked_username'] = username 
+                return render(request, "auth/signup.html", {'username_success': '사용 가능한 아이디입니다', 'username': username})
+
+        # 비밀번호
+        elif check_action == "signup": 
+            # 중복검사 통과한 아이디인지 확인
+            if request.session.get('checked_username') != username: 
+                return render(request, "auth/signup.html", {'error_ischeck': '아이디 중복검사를 먼저 진행해주세요', 'username': username})
+            
+            # 정규표현식으로 비밀번호 유효성 검사
+            if len(password) < 8 or not re.search(r"[!@#$%^&*(),.?\":{}|<>]", password): 
+                return render(request, "auth/signup.html", {'password_error': '8자리 이상, 특수문자를 포함한 비밀번호를 입력해주세요', 'username': username, 'username_success': '사용 가능한 아이디입니다'})
+
+            # 비밀번호 일치 여부 검사
+            if password != password_confirm: 
+                return render(request, "auth/signup.html", {'password_confirm_error': '비밀번호가 일치하지 않습니다', 'username': username, 'username_success': '사용 가능한 아이디입니다'})
         
-        if request.POST['password'] == request.POST['password_confirm']:
+            
+            # 모든 검사 통과 시 회원가입 진행
             new_user = User.objects.create_user(
-                username=request.POST['username'],
-                password=request.POST['password'],
+                username=username,
+                password=password,
             )
 
-            profile = new_user.profile
-            profile.nickname = request.POST['nickname']
-            profile.save()
+            # 아이디 중복검사 초기화
+            request.session['checked_username'] = ''    
 
             auth.login(request, new_user)
-            return redirect("home_main")
-        else:
-            return render(request, "auth/signup.html", {'error': '비밀번호가 일치하지 않습니다.'})
-        
+            return redirect("accounts:nickname_setup")
+    
     return render(request, "auth/signup.html")
+
+
+        
 
 def login(request): 
     if request.method == "POST":

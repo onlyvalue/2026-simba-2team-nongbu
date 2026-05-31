@@ -15,7 +15,7 @@
 <!-- 페이지 내용: 여기부터 코딩하면됨!! -->
 <div class="nickname-frame">
       <div class="nickname-card">
-            <form action="{% url '' %}" method="POST" class="form-box" novalidate>
+            <form action="{% url 'accounts:nickname_setup' %}" method="POST" class="form-box" novalidate>
                   <p>이제,<br>별조각을 심을 준비가<br>되셨나요?</p>
                   {% csrf_token %}
                   <input id="nickname" type="text" name="nickname" placeholder="닉네임을 입력하세요.">
