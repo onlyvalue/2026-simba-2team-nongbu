@@ -58,23 +58,21 @@ def signup(request):
     
     return render(request, "auth/signup.html")
 
-
-        
-
 def login(request): 
     if request.method == "POST":
-        username = request.POST['username']
-        password = request.POST['password']
-        user = auth.authenticate(request, username=username, password=password)
+        # 아이디와 비밀번호 가져오기
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
+        # 아이디와 비밀번호가 일치하는지 확인
+        user = auth.authenticate(request, username=username, password=password) 
         if user is not None:
             auth.login(request, user)
             return redirect("home_main")
         else:
-            return render(request, "auth/login.html",{'error': '아이디 또는 비밀번호가 일치하지 않습니다.'})
+            return render(request, "auth/login.html", {'error': '아이디 또는 비밀번호가 일치하지 않습니다.'})
         
-    elif request.method == "GET":
-        return render(request, "auth/login.html")
+    return render(request, "auth/login.html")
 
 def logout(request):
     auth.logout(request)

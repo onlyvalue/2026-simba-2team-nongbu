@@ -29,13 +29,16 @@
                         </div>
                         <div class="form-group">
                             <label for="login-password">비밀번호</label>
-                            <input id="login-password" type="password" name="password" placeholder="• • • • • • • • • • • •">
+                            <input id="login-password" type="password" name="password"
+                                placeholder="• • • • • • • • • • • •">
                         </div>
                     </div>
                 </div>
                 <div class="info">
+                    {% if error %}
                     <img src="{% static 'images/warning-circle-thin.svg' %}">
-                    <p>아이디 또는 비밀번호가 일치하지 않습니다.</p>
+                    <p>{{error}}</p>
+                    {% endif %}
                 </div>
             </div>
             <button type="submit" class="login-btn">
