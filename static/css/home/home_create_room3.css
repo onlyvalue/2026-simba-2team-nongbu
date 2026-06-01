@@ -31,6 +31,15 @@
     gap: 112px;
 }
 
+.create-space-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 63px;
+
+    width: 320.5px;
+}
+
 .back-button {
     border: none;
     background: transparent;
@@ -148,6 +157,22 @@
 
 /* chip hover 시 기본 아이콘 숨김 */
 .chip:hover .icon-default {
+    opacity: 0;
+}
+
+.chip.active {
+    border: 1px solid var(--Foundation-Violet-Normal, #1A1953);
+}
+
+.chip.active p {
+    color: var(--Foundation-Violet-Normal, #1A1953);
+}
+
+.chip.active .icon-hover {
+    opacity: 1;
+}
+
+.chip.active .icon-default {
     opacity: 0;
 }
 
