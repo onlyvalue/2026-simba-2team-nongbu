@@ -24,15 +24,18 @@ home_참여하기
                               </a>
                               <p class="top-bar-title">우주 생성하기</p>
                         </div>
-                        <div class="join-space">
-                              <div class="input-group">
-                                    <p class="input-label">우주 참여하기</p>
-                                    <input class="input-field" placeholder="받은 코드 또는 링크를 입력하세요">
+                        <form method="POST">
+                              {% csrf_token %}
+                              <div class="join-space">
+                                    <div class="input-group">
+                                          <p class="input-label">우주 참여하기</p>
+                                          <input class="input-field" name="invite_code" placeholder="받은 코드 또는 링크를 입력하세요">
+                                    </div>
+                                    <p class="input-description">친구한테 코드 또는 링크를 받으세요</p>
                               </div>
-                              <p class="input-description">친구한테 코드 또는 링크를 받으세요</p>
-                        </div>
+                              <button type="submit" class="primary-btn next-btn">다음</button>
+                        </form>
                   </div>
-                  <a class="primary-btn next-btn" href="">다음</a>      
             </div>
       </div>
 

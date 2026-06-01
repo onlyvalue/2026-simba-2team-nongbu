@@ -15,55 +15,58 @@ home_방 생성1
 
 <!-- 페이지 내용: 여기부터 코딩하면됨!! main 클래스명 x -->
 <div class="frame-1">
-      <div class="elements-1">
+    <div class="elements-1">
         <div class="top-bar">
             <a href="{% url 'home_create_room2' %}" class="back-button">
                 <img src="{% static 'images/chevron-backward.svg' %}">
             </a>
             <p class="top-bar-title">우주 생성하기</p>
         </div>
-        <div class="elements-2">
-            <div class="record-cycle-setting">
-                <p class="setting-title">기록 주기 선택</p>
-                <div class="chip">
-                    <div class="icon-wrapper">
-                        <img class="icon-default" src="{% static 'images/nrk_media-completed.svg' %}">
-                        <img class="icon-hover" src="{% static 'images/nrk_media-completed-purple.svg' %}">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="elements-2">
+                <div class="record-cycle-setting">
+                    <p class="setting-title">기록 주기 선택</p>
+                    <div class="chip">
+                        <div class="icon-wrapper">
+                            <img class="icon-default" src="{% static 'images/nrk_media-completed.svg' %}">
+                            <img class="icon-hover" src="{% static 'images/nrk_media-completed-purple.svg' %}">
+                        </div>
+                        <p>매일 기록</p>
                     </div>
-                    <p>매일 기록</p>
-                </div>
-                <p class="setting-description">당일 기록을 놓치면 이어지던 별자리가 끊어집니다</p>
-                <div class="chip">
-                    <div class="icon-wrapper">
-                        <img class="icon-default" src="{% static 'images/nrk_media-completed.svg' %}">
-                        <img class="icon-hover" src="{% static 'images/nrk_media-completed-purple.svg' %}">
+                    <p class="setting-description">당일 기록을 놓치면 이어지던 별자리가 끊어집니다</p>
+                    <div class="chip">
+                        <div class="icon-wrapper">
+                            <img class="icon-default" src="{% static 'images/nrk_media-completed.svg' %}">
+                            <img class="icon-hover" src="{% static 'images/nrk_media-completed-purple.svg' %}">
+                        </div>
+                        <p>자유 기록</p>
                     </div>
-                    <p>자유 기록</p>
+                    <p class="setting-description">기록하고 싶을 때, 자유롭게 기록합니다</p>
                 </div>
-                <p class="setting-description">기록하고 싶을 때, 자유롭게 기록합니다</p>
+                <div class="count-limit-setting">
+                    <p class="setting-title">횟수 제한 선택</p>
+                    <div class="chip">
+                        <div class="icon-wrapper">
+                            <img class="icon-default" src="{% static 'images/nrk_media-completed.svg' %}">
+                            <img class="icon-hover" src="{% static 'images/nrk_media-completed-purple.svg' %}">
+                        </div>
+                        <p>하루에 한 번</p>
+                    </div>
+                    <p class="setting-description">하루에 한 번만 기록할 수 있도록 횟수를 제한합니다</p>
+                    <div class="chip">
+                        <div class="icon-wrapper">
+                            <img class="icon-default" src="{% static 'images/nrk_media-completed.svg' %}">
+                            <img class="icon-hover" src="{% static 'images/nrk_media-completed-purple.svg' %}">
+                        </div>
+                        <p>무제한 기록</p>
+                    </div>
+                    <p class="setting-description">하루 중 원하는 순간마다 횟수 제한 없이 기록할 수 있습니다</p>
+                </div>
             </div>
-            <div class="count-limit-setting">
-                <p class="setting-title">횟수 제한 선택</p>
-                <div class="chip">
-                    <div class="icon-wrapper">
-                        <img class="icon-default" src="{% static 'images/nrk_media-completed.svg' %}">
-                        <img class="icon-hover" src="{% static 'images/nrk_media-completed-purple.svg' %}">
-                    </div>
-                    <p>하루에 한 번</p>
-                </div>
-                <p class="setting-description">하루에 한 번만 기록할 수 있도록 횟수를 제한합니다</p>
-                <div class="chip">
-                    <div class="icon-wrapper">
-                        <img class="icon-default" src="{% static 'images/nrk_media-completed.svg' %}">
-                        <img class="icon-hover" src="{% static 'images/nrk_media-completed-purple.svg' %}">
-                    </div>
-                    <p>무제한 기록</p>
-                </div>
-                <p class="setting-description">하루 중 원하는 순간마다 횟수 제한 없이 기록할 수 있습니다</p>
-            </div>
-        </div>
-        <a class="primary-btn create-btn" href="{% url 'home_join_room' %}">우주 생성</a>
-      </div>
+            <button type="submit" class="primary-btn create-btn">우주 생성</button>
+        </form>
+    </div>
       {% include 'components/navbar.html' with active_nav='home' %}
 </div>
 
