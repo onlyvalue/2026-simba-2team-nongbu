@@ -12,31 +12,38 @@
 {% block content %}
 
 <!-- 페이지 내용: 여기부터 코딩하면됨!! -->
-<div class="login-frame">
-    <div class="login-main">
-        <div class="login-title">
-            <p>별조각</p>
-            <p>매일의추억을새겨보세요</p>
-        </div>
-        <div class="login-card">
-            <form action="{% url 'accounts:login' %}" method="POST" class="form-box">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label for="login-username">아이디</label>
-                    <input id="login-username" type="text" name="username" placeholder=" abc123 / user9" required>
+<div class="login-main">
+    <div class="elements-1">
+        <form action="{% url 'accounts:login' %}" method="POST" class="form-box" novalidate>
+            {% csrf_token %}
+            <div class="elements-3">
+                <div class="elements-4">
+                    <div class="login-title">
+                        <p>별조각</p>
+                        <p>매일의추억을새겨보세요</p>
+                    </div>
+                    <div class="login-card">
+                        <div class="form-group">
+                            <label for="login-username">아이디</label>
+                            <input id="login-username" type="text" name="username" placeholder=" abc123 / user9">
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">비밀번호</label>
+                            <input id="login-password" type="password" name="password" placeholder="• • • • • • • • • • • •">
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="login-password">비밀번호</label>
-                    <input id="login-password" type="password" name="password" placeholder="• • • • • • • • • • • •"
-                        required>
+                <div class="info">
+                    <img src="{% static 'images/warning-circle-thin.svg' %}">
+                    <p>아이디 또는 비밀번호가 일치하지 않습니다.</p>
                 </div>
-                <button type="submit" class="primary-button">
-                    <p>로그인</p>
-                    <img src="{% static 'images/ArrowRight.svg' %}">
-                </button>
-            </form>
-            <p class="signup">계정이없으신가요? <a href="{% url 'accounts:signup' %}">회원가입</a></p>
-        </div>
+            </div>
+            <button type="submit" class="login-btn">
+                <p>로그인</p>
+                <img src="{% static 'images/ArrowRight.svg' %}">
+            </button>
+        </form>
+        <p class="signup">계정이없으신가요? <a href="{% url 'accounts:signup' %}">회원가입</a></p>
     </div>
 </div>
 

@@ -1,9 +1,9 @@
-.login-frame {
+.login-main {
     display: flex;
     width: 100%;
     height: 100%;
-    padding: 96px 15.5px 243px 16px;
     overflow: hidden;
+    padding: 96px 15.5px 243px 16px;
     border-radius: 30px;
     border: 1px solid var(--Foundation-Violet-Normal, #1A1953);
     background: #F9F9F9;
@@ -11,12 +11,28 @@
     align-items: center;
 }
 
-.login-main {
+.elements-1 {
     display: flex;
     width: 343.5px;
     flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.form-box,
+.elements-3 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+}
+
+.elements-4 {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 83px;
+    align-self: stretch;
 }
 
 .login-title {
@@ -27,12 +43,10 @@
     gap: 8px;
 }
 
-.login-title p {
-    align-self: stretch;
-    color: var(--Foundation-Violet-Darker, #09091D);
+.login-title p:nth-child(1) {
+    color: #09091D;
     font-family: Inter;
     font-size: 32px;
-    font-style: normal;
     font-weight: 500;
     line-height: 120%;
     letter-spacing: -0.5px;
@@ -40,24 +54,17 @@
 }
 
 .login-title p:nth-child(2) {
+    color: #09091D;
+    font-family: Inter;
     font-size: 16px;
     font-weight: 400;
     line-height: 150%;
-    font-feature-settings: 'liga' off, 'clig' off;
+    text-align: center;
 }
 
 .login-card {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 24px;
-    align-self: stretch;
-}
-
-.form-box {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
     gap: 24px;
     align-self: stretch;
 }
@@ -65,16 +72,14 @@
 .form-group {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     gap: 4px;
     align-self: stretch;
 }
 
 .form-group label {
-    color: var(--Foundation-Violet-Darker, #09091D);
+    color: #09091D;
     font-family: Inter;
     font-size: 16px;
-    font-style: normal;
     font-weight: 500;
     line-height: 150%;
 }
@@ -83,79 +88,80 @@
     height: 56px;
     padding: 0 24px;
     border-radius: 80px;
-    border: 1px solid var(--foundation-violet-light-active, #B8B8CA);
-    background: var(--, #F9F9F9);
+    border: 1px solid #B8B8CA;
+    background: #F9F9F9;
     align-self: stretch;
-    font-size: 16px;
+    color: #09091D;
     font-family: Inter;
+    font-size: 16px;
     font-weight: 400;
+    line-height: 150%;
+    outline: none;
 }
 
 .form-group input::placeholder {
     color: #B8B8CA;
-    font-size: 16px;
-    font-family: Inter;
-    font-weight: 400;
 }
 
-.primary-button {
+.info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.info img {
+    width: 12.5px;
+    height: 12.5px;
+}
+
+.info p {
+    color: #F00;
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 24px;
+}
+
+.login-btn {
     display: flex;
     width: 344px;
     height: 56px;
     padding: 14px 28px;
     border-radius: 20px;
-    background: var(--Foundation-Violet-Normal, #1A1953);
+    background: #1A1953;
     justify-content: center;
     align-items: center;
     gap: 10px;
+    border: none;
+    cursor: pointer;
 }
 
-.primary-button p {
+.login-btn p {
     color: #FFF;
     font-family: Inter;
     font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 150%;
-    font-feature-settings: 'liga' off, 'clig' off;
 }
 
-.primary-button img {
-    display: flex;
+.login-btn img {
     width: 16px;
     height: 16px;
-    padding: 2.4px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 6.4px;
-    flex-shrink: 0;
 }
 
 .signup {
-    color: var(--Foundation-Violet-Darker, #09091D);
+    color: #09091D;
     font-family: Inter;
     font-size: 16px;
-    font-style: normal;
     font-weight: 400;
     line-height: 150%;
-    font-feature-settings: 'liga' off, 'clig' off;
 }
 
 .signup a {
-    color: var(--Foundation-Violet-Darker, #09091D);
-    font-feature-settings: 'liga' off, 'clig' off;
-
-    /* 밑줄용 */
+    color: #09091D;
     font-family: Inter;
     font-size: 16px;
-    font-style: normal;
     font-weight: 400;
     line-height: 150%;
-    text-decoration-line: underline;
-    text-decoration-style: solid;
-    text-decoration-skip-ink: none;
-    text-decoration-thickness: auto;
-    text-underline-offset: auto;
-    text-underline-position: from-font;
+    text-decoration: underline;
 }
