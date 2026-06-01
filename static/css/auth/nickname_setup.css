@@ -12,7 +12,7 @@
     align-items: center;
 }
 
-.nickname-card {
+.form-tag {
     display: flex;
     width: 343px;
     flex-direction: column;
