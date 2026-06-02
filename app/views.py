@@ -33,3 +33,9 @@ def home_create_room3(request):
 
 def home_join_room(request):
     return render(request, 'home/home_join_room.html')
+
+def space_main(request):
+    return render(request, 'space/space_main.html')
+
+def space_room(request):
+    return render(request, 'space/space_room.html')

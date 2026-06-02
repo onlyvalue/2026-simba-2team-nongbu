@@ -6,13 +6,33 @@
 {% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet"
-      href="{% static 'css/페이지css경로.css' %}">
+<link rel="stylesheet" href="{% static 'css/space/space_main.css' %}">
+<link rel="stylesheet" href="{% static 'css/components/navbar.css' %}">
 {% endblock %}
 
 {% block content %}
 
 <!-- 페이지 내용: 여기부터 코딩하면됨!! main 클래스명 x -->
+<div class="space-main">
+      <div class="elements-1">
+            <div class="elements-2">
+                  <div class="top-bar">
+                        <p class="top-bar-title">내 우주 둘러보기</p>
+                  </div>
+                  <div class="list">
+                        {% for space in spaces %}
+                        <a href="{% url 'space_detail' space.id %}">
+                              <button>
+                                    <p>{{ space.name }}</p>
+                                    <img src="{% static 'images/Arrow.svg' %}">
+                              </button>
+                        </a>
+                        {% endfor %}
+                  </div>
+            </div>
+      </div>
+      {% include 'components/navbar.html' with active_nav='space' %}
+</div>
 
 {% endblock %}
 

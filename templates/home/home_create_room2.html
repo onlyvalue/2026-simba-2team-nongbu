@@ -26,8 +26,12 @@ home_방 생성2
                         </p>
                   </div>
                   <div class="elements-3">
-                        <form method="POST" action="{% url 'home_create_room3' %}" class="create-room-form">
+                        <form method="POST" action="{% url 'home_create_room2' %}" class="create-room-form">
                               {% csrf_token %}
+
+                              <input type="hidden" name="space_name" value="{{ space_name }}">
+                              <input type="hidden" name="space_keyword" value="{{ space_keyword }}">
+
                               <div class="elements-4">
                                     <div class="operation-period">
                                           <div class="input-group">

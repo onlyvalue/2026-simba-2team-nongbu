@@ -6,19 +6,17 @@
 {% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet"
-      href="{% static 'css/페이지css경로.css' %}">
+<link rel="stylesheet" href="{% static 'css/mypage/mypage_logout.css' %}">
+<link rel="stylesheet" href="{% static 'css/components/navbar.css' %}">
 {% endblock %}
 
 {% block content %}
 
 <!-- 페이지 내용: 여기부터 코딩하면됨!! main 클래스명 x -->
 
-{% endblock %}
 
-{% block navbar %}
-{% include 'components/navbar.html'
-    with active_nav='mypage' %}
+
+{% include 'components/navbar.html' with active_nav='mypage' %}
 {% endblock %}
 
 {% block extra_js %}

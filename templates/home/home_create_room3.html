@@ -22,8 +22,15 @@ home_방 생성1
             </a>
             <p class="top-bar-title">우주 생성하기</p>
         </div>
-        <form method="POST" class="create-space-form">
+        <form method="POST" action="{% url 'home_create_room3' %}" class="create-space-form">
             {% csrf_token %}
+
+            <input type="hidden" name="space_name" value="{{ space_name }}">
+            <input type="hidden" name="space_keyword" value="{{ space_keyword }}">
+            <input type="hidden" name="operation_period" value="{{ operation_period }}">
+            <input type="hidden" name="member_count" value="{{ member_count }}">
+            <input type="hidden" name="is_public" value="{{ is_public }}">
+
             <div class="elements-2">
                 <div class="record-cycle-setting">
                     <p class="setting-title">기록 주기 선택</p>

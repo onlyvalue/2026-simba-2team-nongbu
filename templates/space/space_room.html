@@ -2,17 +2,45 @@
 {% load static %}
 
 {% block title %}
-페이지이름
+우주_방
 {% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet"
-      href="{% static 'css/페이지css경로.css' %}">
+<link rel="stylesheet" href="{% static 'css/space/space_room.css' %}">
+<link rel="stylesheet" href="{% static 'css/components/navbar.css' %}">
 {% endblock %}
 
 {% block content %}
 
 <!-- 페이지 내용: 여기부터 코딩하면됨!! main 클래스명 x -->
+<div class="space-room space-detail">
+    <div class="top-bar">
+        <a href="{% url 'space_main' %}" class="back-button">
+            <img src="{% static 'images/chevron-backward.svg' %}">
+        </a>
+        <p class="top-bar-title">{{ space.name }}</p>
+        <button class="menu-button" id="menuBtn">
+            <img src="{% static 'images/ant-design_more-outlined.svg' %}">
+        </button>
+    </div>
+    <div class="fab-container">
+        <div class="fab-item camera-item">
+            <span class="fab-label">촬영</span>
+            <button class="sub-btn camera-btn">
+                <img src="{% static 'images/f7_camera-circle-fill.svg' %}">
+            </button>
+        </div>
+        <div class="fab-item upload-item">
+            <span class="fab-label">업로드</span>
+            <button class="sub-btn upload-btn">
+                <img src="{% static 'images/mdi_upload-circle.svg' %}">
+            </button>
+        </div>
+        <button class="main-btn" id="fabBtn">
+            <img src="{% static 'images/flowbite_circle-plus-solid.svg' %}">
+        </button>
+    </div>
+</div>
 
 {% endblock %}
 
