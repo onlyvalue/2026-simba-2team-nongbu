@@ -1,0 +1,64 @@
+.space-menu {
+    display: flex;
+    width: 331px;
+    height: 172px;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    border-radius: 40px;
+    opacity: 0.5;
+    background: var(--foundation-violet-light-hover, #DDDDE5);
+}
+
+.space-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+}
+
+
+a.menu-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--Foundation-Violet-Normal, #1A1953);
+    color: var(--Foundation-Violet-Darker, #09091D);
+    text-align: center;
+    font-feature-settings: 'liga' off, 'clig' off;
+
+    /* 소제목부연설명용/숫자 */
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px; /* 123.077% */
+}
+
+.menu-title {
+    color: var(--Foundation-Violet-Darker, #09091D);
+    text-align: center;
+
+    /* 소제목용 */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.menu-content {
+    color: var(--Foundation-Violet-Darker, #09091D);
+
+    /* 소제목부연설명용/숫자 */
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+}
