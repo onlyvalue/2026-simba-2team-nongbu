@@ -18,7 +18,7 @@ home_방 생성2
       <div class="elements-1">
             <div class="elements-2">
                   <div class="top-bar">
-                        <a href="{% url 'home_create_room1' %}" class="back-button">
+                        <a href="{% url 'spaces:home_create_room1' %}" class="back-button">
                               <img src="{% static 'images/chevron-backward.svg' %}">
                         </a>
                         <p class="top-bar-title">
@@ -26,7 +26,7 @@ home_방 생성2
                         </p>
                   </div>
                   <div class="elements-3">
-                        <form method="POST" action="{% url 'home_create_room2' %}" class="create-room-form">
+                        <form method="POST" action="{% url 'spaces:home_create_room2' %}" class="create-room-form">
                               {% csrf_token %}
 
                               <input type="hidden" name="space_name" value="{{ space_name }}">
@@ -46,16 +46,16 @@ home_방 생성2
                                                 <p class="member-count">
                                                       <span id="memberCount">1</span>명
                                                 </p>
-                                                <input type="range" min="1" max="12" value="1" 
-                                                      class="member-slider" id="memberSlider" name="member_count">
+                                                <input type="range" min="1" max="12" value="1" class="member-slider"
+                                                      id="memberSlider" name="member_count">
                                                 <p class="slider-description">최소 1명 ~ 최대 12명까지 가능합니다</p>
                                           </div>
                                     </div>
                                     <div class="privacy-setting">
                                           <div class="open-space">
                                                 <label class="input-label" for="privacyCheck">우주를 공개하시겠습니까?</label>
-                                                <input type="checkbox" name="is_public" 
-                                                      class="privacy-checkbox" id="privacyCheck">
+                                                <input type="checkbox" name="is_public" class="privacy-checkbox"
+                                                      id="privacyCheck">
                                           </div>
                                           <p>우주 공개를 선택할 경우, 모두가 회원님의 우주를<br>목록에서 확인 및 선택할 수 있게 됩니다</p>
                                     </div>

@@ -2,9 +2,8 @@ import uuid
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 
-# Create your views here.
 def home_main(request):
-    spaces = Space.objects.all().order_by('-created_at')
+    spaces = Space.objects.filter(is_public=True).order_by('-created_at') # 공개 된 우주만 최신 순으로 가져오기
     return render(request, 'home/home_main.html', {'spaces':spaces})
 
 def space_create_step1(request):
@@ -103,3 +102,9 @@ def home_join_room(request):
             return render(request, 'home/home_join_room.html', {'error': '올바른 코드가 아닙니다. 다시 확인해주세요.'})
         
     return render(request, 'home/home_join_room.html')
+
+def space_main(request):
+    return render(request, 'space/space_main.html')
+
+def space_room(request):
+    return render(request, 'space/space_room.html')

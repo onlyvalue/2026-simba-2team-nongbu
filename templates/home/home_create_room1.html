@@ -23,21 +23,23 @@ home_방 생성1
                         </a>
                         <p class="top-bar-title">우주 생성하기</p>
                   </div>
-                  <form method="POST" action="{% url 'home_create_room1' %}" class="create-room-form">
+                  <form method="POST" action="{% url 'spaces:home_create_room1' %}" class="create-room-form">
                         {% csrf_token %}
 
                         <div class="elements-3">
                               <div class="space-name">
                                     <div class="input-group">
                                           <p class="input-label">우주 이름</p>
-                                          <input class="input-field" name="space_name" placeholder="이름을 입력하세요" maxlength="15" required>
+                                          <input class="input-field" name="space_name" placeholder="이름을 입력하세요"
+                                                maxlength="15" required>
                                     </div>
                                     <p class="input-description">이름은 최대 15자까지 가능합니다</p>
                               </div>
                               <div class="space-keyword">
                                     <div class="input-group">
                                           <p class="input-label">우주 키워드</p>
-                                          <input class="input-field" name="space_keyword" placeholder="키워드를 입력하세요" maxlength="15">
+                                          <input class="input-field" name="space_keyword" placeholder="키워드를 입력하세요"
+                                                maxlength="15">
                                     </div>
                                     <p class="input-description">키워드는 최대 15자까지 가능합니다<br>(미입력시 우주 이름이 기본값으로 각인됩니다)</p>
                               </div>

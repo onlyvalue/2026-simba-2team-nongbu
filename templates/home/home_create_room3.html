@@ -17,12 +17,12 @@ home_방 생성1
 <div class="frame-1">
     <div class="elements-1">
         <div class="top-bar">
-            <a href="{% url 'home_create_room2' %}" class="back-button">
+            <a href="{% url 'spaces:home_create_room2' %}" class="back-button">
                 <img src="{% static 'images/chevron-backward.svg' %}">
             </a>
             <p class="top-bar-title">우주 생성하기</p>
         </div>
-        <form method="POST" action="{% url 'home_create_room3' %}" class="create-space-form">
+        <form method="POST" action="{% url 'spaces:home_create_room3' %}" class="create-space-form">
             {% csrf_token %}
 
             <input type="hidden" name="space_name" value="{{ space_name }}">
