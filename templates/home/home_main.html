@@ -14,7 +14,7 @@ home_메인
 
 
 <!-- 페이지 내용: 여기부터 코딩하면됨!! main 클래스명 x -->
- <div class="home-main">
+<div class="home-main">
     <div class="elements-1">
         <div class="elements-2">
             <div class="head">
@@ -25,46 +25,29 @@ home_메인
                     </div>
                 </div>
                 <div class="space_btn">
-                    <button class="create" onclick='location.href="{% url "home_create_room1" %}"'>우주 만들기</button>
-                    <button class="enter">우주 참여하기</button>
+                    <button class="create" onclick='location.href="{% url "spaces:home_create_room1" %}"'>우주
+                        만들기</button>
+                    <button class="enter" onclick='location.href="{% url "spaces:home_join_room" %}"'>우주 참여하기</button>
                 </div>
             </div>
 
             <div class="list">
+                {% if spaces %}
+                {% for space in spaces %}
                 <button>
-                    <p>멋쟁이사자처럼 14기</p>
-                    <img src="{% static 'images/Arrow.svg' %}">
+                    <p class="space-title">{{ space.name }}</p>
+                    <img src="{% static 'images/Arrow.svg' %}" alt="이동">
                 </button>
-                <button>
-                    <p>독서실 인증 방</p>
-                    <img src="{% static 'images/Arrow.svg' %}">
-                </button>
-                <button>
-                    <p>일찍 자고 일찍 일어나기</p>
-                    <img src="{% static 'images/Arrow.svg' %}">
-                </button>
-                <button>
-                    <p>갓생 챌린지</p>
-                    <img src="{% static 'images/Arrow.svg' %}">
-                </button>
-                <button>
-                    <p>팀플 이겨내자</p>
-                    <img src="{% static 'images/Arrow.svg' %}">
-                </button>
-                <button>
-                    <p>긍정 에너지 인증하기</p>
-                    <img src="{% static 'images/Arrow.svg' %}">
-                </button>
-                <button>
-                    <p>일기 쓸 사람</p>
-                    <img src="{% static 'images/Arrow.svg' %}">
-                </button>
+                {% endfor %}
+                {% else %}
+                <p class="no-space">아직 만들어진 우주가 없습니다.</p>
+                {% endif %}
             </div>
 
         </div>
     </div>
     {% include 'components/navbar.html' with active_nav='home' %}
- </div>
+</div>
 
 {% endblock %}
 
