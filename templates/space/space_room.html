@@ -16,7 +16,7 @@
 <!-- 페이지 내용: 여기부터 코딩하면됨!! main 클래스명 x -->
 <div class="space-room space-detail">
     <div class="top-bar">
-        <a href="{% url 'space_main' %}" class="back-button">
+        <a href="{% url 'spaces:space_main' %}" class="back-button">
             <img src="{% static 'images/chevron-backward-white.svg' %}">
         </a>
         <p class="top-bar-title">{{ space.name }}</p>
