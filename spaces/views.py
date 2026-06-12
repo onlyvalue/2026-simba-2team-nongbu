@@ -56,7 +56,7 @@ def space_create_step2(request):
             'member_count': member_count,
             'is_public': is_public_checked
         })
-    return redirect('home_create_room1')
+    return redirect('spaces:home_create_room1')
 
 
 def space_create_step3(request):
@@ -95,9 +95,16 @@ def home_join_room(request):
     if request.method == 'POST':
         invite_code = request.POST['invite_code']
         target_space = Space.objects.filter(invite_token=invite_code).first()
+        user = request.user
 
         if target_space:
-            return redirect('home_main')
+            current_members_count = SpaceMember.objects.filter(space=target_space).count()
+            
+            if current_members_count >= target_space.max_capacity:
+                return render(request, 'home/home_join_room.html', {'error': '이 우주는 이미 정원이 꽉 찼습니다.'})
+            
+            if not SpaceMember.objects.filter(user=user, space=target_space).exists():
+                SpaceMember.objects.create(user=user, space=target_space)
         else:
             return render(request, 'home/home_join_room.html', {'error': '올바른 코드가 아닙니다. 다시 확인해주세요.'})
         
@@ -106,5 +113,6 @@ def home_join_room(request):
 def space_main(request):
     return render(request, 'space/space_main.html')
 
-def space_room(request):
-    return render(request, 'space/space_room.html')
+def space_room(request, space_id):
+    space = get_object_or_404(Space, pk=space_id)
+    return render(request, 'space/space_room.html', {'space': space})
