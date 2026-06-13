@@ -24,9 +24,9 @@ def create(request, space_id):
 def new_star(request, space_id):
     space = get_object_or_404(Space, pk=space_id)
     
-    # is_member = SpaceMember.objects.filter(user=request.user, space=space).exists()
-    # if not is_member:
-    #     return redirect('spaces:space_room', space_id=space_id)
+    is_member = SpaceMember.objects.filter(user=request.user, space=space).exists()
+    if not is_member:
+        return redirect('spaces:space_room', space_id=space_id)
     
     return render(request, 'space/space_upload.html', {'space': space})
 

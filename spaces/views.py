@@ -91,27 +91,30 @@ def space_create_step3(request):
         return redirect('home_main')
     return redirect('home_create_room1')
 
-def home_join_room(request):
+def join_space(request):
     if request.method == 'POST':
-        invite_code = request.POST['invite_code']
+        invite_code = request.POST.get('invite_code')
         target_space = Space.objects.filter(invite_token=invite_code).first()
         user = request.user
 
         if target_space:
             current_members_count = SpaceMember.objects.filter(space=target_space).count()
+
+            if not SpaceMember.objects.filter(user=user, space=target_space).exists():
+                SpaceMember.objects.create(user=user, space=target_space)
             
             if current_members_count >= target_space.max_capacity:
                 return render(request, 'home/home_join_room.html', {'error': '이 우주는 이미 정원이 꽉 찼습니다.'})
-            
-            if not SpaceMember.objects.filter(user=user, space=target_space).exists():
-                SpaceMember.objects.create(user=user, space=target_space)
+
+            return redirect('spaces:space_main')
         else:
             return render(request, 'home/home_join_room.html', {'error': '올바른 코드가 아닙니다. 다시 확인해주세요.'})
         
     return render(request, 'home/home_join_room.html')
 
 def space_main(request):
-    return render(request, 'space/space_main.html')
+    my_spaces = Space.objects.filter(members__user=request.user)
+    return render(request, 'space/space_main.html', {'spaces': my_spaces})
 
 def space_room(request, space_id):
     space = get_object_or_404(Space, pk=space_id)

@@ -21,12 +21,16 @@
                   </div>
                   <div class="list">
                         {% for space in spaces %}
-                        <a href="{% url 'space_detail' space.id %}">
+                        <a href="{% url 'spaces:space_room' space.space_id %}">
                               <button>
                                     <p>{{ space.name }}</p>
                                     <img src="{% static 'images/Arrow.svg' %}">
                               </button>
                         </a>
+                        {% empty %}
+                        <div class="empty-state" style="text-align: center; padding: 50px 0; color: #888;">
+                              <p>새로운 우주를 만들거나 초대 코드로 참여해 보세요!</p>
+                        </div>
                         {% endfor %}
                   </div>
             </div>
