@@ -18,6 +18,6 @@ class Space(models.Model):
         return f"[{self.space_id}] {self.name}"
     
 class SpaceMember(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    space_id = models.ForeignKey(Space, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    space = models.ForeignKey(Space, on_delete=models.CASCADE)
     joined_at = models.DateTimeField(auto_now_add=True)

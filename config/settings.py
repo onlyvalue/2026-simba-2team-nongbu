@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'app',
     'accounts',
     'spaces',
+    'stars',
 ]
 
 MIDDLEWARE = [
