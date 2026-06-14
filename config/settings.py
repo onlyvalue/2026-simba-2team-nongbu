@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'accounts',
     'spaces',
     'stars',
+    'memories'
 ]
 
 MIDDLEWARE = [

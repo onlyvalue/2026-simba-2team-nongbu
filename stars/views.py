@@ -22,6 +22,9 @@ def create(request, space_id):
     return redirect('spaces:space_room', space_id=space_id)
 
 def new_star(request, space_id):
+    if not request.user.is_authenticated:
+        return redirect('accounts:login')
+    
     space = get_object_or_404(Space, pk=space_id)
     
     is_member = SpaceMember.objects.filter(user=request.user, space=space).exists()

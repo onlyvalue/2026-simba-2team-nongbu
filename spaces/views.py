@@ -4,6 +4,9 @@ from .models import *
 from django.db.models import Q
 
 def home_main(request):
+    if not request.user.is_authenticated:
+        return redirect('accounts:login')
+    
     search = request.GET.get('search', '')
 
     spaces = Space.objects.filter(is_public=True).order_by('-created_at') # 공개 된 우주만 최신 순으로 가져오기

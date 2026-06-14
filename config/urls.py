@@ -20,9 +20,9 @@ urlpatterns = [
     path('', home_main, name='home_main'),
     path('onboarding/',onboarding, name='onboarding'),
     path('onboarding/start/', onboarding_start, name='onboarding_start'),
-    path('memory/', memory_main, name='memory_main'),
     path('mypage/', mypage_main, name='mypage_main'),
     path('space/', include('spaces.urls')),
     path('account/', include('accounts.urls')),
+    path('memory/', include('memories.urls')),
     path('space/upload/', space_upload, name='space_upload'),
 ]
