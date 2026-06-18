@@ -136,6 +136,18 @@
     cursor: pointer;
 }
 
+.create:hover,
+.enter:hover {
+    background: var(--foundation-violet-light-active, #B8B8CA);
+    transition: 0.2s;
+}
+
+.create:active,
+.enter:active {
+    background: var(--Foundation-Violet-Dark, #14133E);
+    transform: scale(0.98);
+}
+
 .list {
     display: flex;
     width: 343px;

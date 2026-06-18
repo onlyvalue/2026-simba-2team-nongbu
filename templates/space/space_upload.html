@@ -17,28 +17,35 @@
 <div class="space-main">
     <div class="elements-1">
         <div class="top-bar">
-            <a href="{% url 'spaces:home_create_room2' %}" class="back-button">
+            <a href="javascript:history.back()" class="back-button">
                 <img src="{% static 'images/chevron-backward.svg' %}">
             </a>
             <p class="top-bar-title">{{ space.name }}</p>
         </div>
 
-        <div class="image-upload-area">
-            <input type="file" id="imageInput" accept="image/*" hidden>
-            <label for="imageInput" class="image-upload-box">
-                <img class="camera-icon" src="{% static 'images/basil_camera-solid.svg' %}">
-                <img class="previewImage" class="preview-image">
-                <button class="add-image-btn">
+        <form method="POST" class="upload-form" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="image-upload-area">
+                <input type="file" id="imageInput" accept="image/*" hidden>
+
+                <label for="imageInput" class="image-upload-box">
+                    <img class="camera-icon" id="cameraIcon" src="{% static 'images/basil_camera-solid.svg' %}">
+                    <img class="preview-image" id="previewImage">
+                </label>
+
+                <button type="button" class="add-image-btn">
                     <img src="{% static 'images/plus-button.svg' %}">
                 </button>
-            </label>
-        </div>
+            </div>
 
-        <div class="record-input-area">
-            <textarea name="content" placeholder="오늘 있었던 일을 기록해보세요!"></textarea>
-        </div>
+            <div class="record-input-area">
+                <textarea name="content" placeholder="오늘 있었던 일을 기록해보세요!"></textarea>
+            </div>
 
-        <button class="primary-btn upload-btn">업로드</button>
+            <button class="primary-btn upload-btn">업로드</button>
+        </form>
+        
 
     </div>
 </div>
@@ -47,5 +54,5 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="{% static 'js/페이지js경로.js' %}"></script>
+<script src="{% static 'js/space_upload.js' %}"></script>
 {% endblock %}
