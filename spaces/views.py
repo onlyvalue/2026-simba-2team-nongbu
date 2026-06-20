@@ -4,6 +4,8 @@ from .models import *
 from django.db.models import Q
 from django.utils import timezone
 from datetime import timedelta
+from .constellation import CONSTELLATIONS, CONSTELLATION_ORDER
+import random
 
 def home_main(request):
     if not request.user.is_authenticated:
@@ -205,9 +207,44 @@ def space_main(request):
 
     return render(request, 'space/space_main.html', {'spaces': active_spaces})
 
-def space_room(request, space_id):
-    space = get_object_or_404(Space, pk=space_id)
-    return render(request, 'space/space_room.html', {'space': space})
+# def space_room(request, space_id):
+#     space = get_object_or_404(Space, pk=space_id)
+#     return render(request, 'space/space_room.html', {'space': space})
+
+def space_room(request, space_id=None):
+
+    total_memory_count = 8  # 테스트
+
+    remain = total_memory_count
+
+    render_constellations = []
+
+    for name in CONSTELLATION_ORDER:
+
+        constellation = CONSTELLATIONS[name]
+        required = constellation["required"]
+
+        current = min(remain, required)
+
+        render_constellations.append({
+            "name": name,
+            "current": current,
+            "required": required,
+            "data": constellation,
+        })
+
+        remain -= required
+
+        if remain <= 0:
+            break
+
+    return render(
+        request,
+        "space/space_room.html",
+        {
+            "render_constellations": render_constellations,
+        }
+    )
 
 def home_room_detail(request, space_id):
     space = get_object_or_404(Space, pk=space_id)

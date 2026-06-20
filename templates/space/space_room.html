@@ -15,6 +15,7 @@
 
 <!-- 페이지 내용: 여기부터 코딩하면됨!! main 클래스명 x -->
 <div class="space-room space-detail">
+    
     <div class="top-bar">
         <a href="{% url 'spaces:space_main' %}" class="back-button">
             <img src="{% static 'images/chevron-backward-white.svg' %}">
@@ -24,7 +25,22 @@
             <img src="{% static 'images/ant-design_more-outlined.svg' %}">
         </button>
     </div>
+
+    <div id="spaceMap">
+        <div class="constellation-area">
+            <svg id="constellation-svg"></svg>
+        </div>
+
+        {{ render_constellations|json_script:"constellations-data" }}
+    </div>
+
     <div class="fab-overlay" id="fabOverlay"></div>
+
+    <button id="resetViewBtn" class="reset-view-btn">
+        <img src="{% static 'images/akar-icons_arrow-back.svg' %}">
+        다시 가운데로 이동
+    </button>
+
     <div class="fab-container">
         <div class="fab-item camera-item">
             <span class="fab-label">촬영</span>
