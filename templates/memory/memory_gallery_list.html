@@ -2,19 +2,85 @@
 {% load static %}
 
 {% block title %}
-페이지이름
+추억 갤러리
 {% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/memory/memroy_gallery_list.css' %}">
+<link rel="stylesheet" href="{% static 'css/memory/memory_gallery_list.css' %}">
 <link rel="stylesheet" href="{% static 'css/components/navbar.css' %}">
 {% endblock %}
 
 {% block content %}
 
-<!-- 페이지 내용: 여기부터 코딩하면됨!! main 클래스명 x -->
+<div class="memory-room space-detail">
 
-{% include 'components/navbar.html' with active_nav='memory' %}
+    <div class="top-bar">
+        <a href="{% url 'memories:memory_main' %}" class="back-button">
+            <img src="{% static 'images/chevron-backward-white.svg' %}" alt="">
+        </a>
+        <p class="top-bar-title">멋쟁이사자처럼 아기사자별자리</p>
+    </div>
+    <div class="calendar-container">
+        <div class="month-header">
+            <a href="#" class="month-arrow">
+                <img src="{% static 'images/basil_arrow-left-outline.svg' %}" alt="">
+            </a>
+            <p class="month-title">APRIL</p>
+            <a href="#" class="month-arrow">
+                <img src="{% static 'images/basil_arrow-right-outline.svg' %}" alt="">
+            </a>
+        </div>
+        <div class="weekdays">
+            <span>SU</span>
+            <span>MO</span>
+            <span>TU</span>
+            <span>WE</span>
+            <span>TH</span>
+            <span>FR</span>
+            <span>SA</span>
+        </div>
+        <form action="#" method="get" class="calendar-box">
+            {% csrf_token %}
+            <button type="submit" class="day-btn">1</button>
+            <button type="submit" class="day-btn">2</button>
+            <button type="submit" class="day-btn">3</button>
+            <button type="submit" class="day-btn">4</button>
+            <button type="submit" class="day-btn">5</button>
+            <button type="submit" class="day-btn">6</button>
+            <button type="submit" class="day-btn">7</button>
+    
+            <button type="submit" class="day-btn">8</button>
+            <button type="submit" class="day-btn">9</button>
+            <button type="submit" class="day-btn">10</button>
+            <button type="submit" class="day-btn">11</button>
+            <button type="submit" class="day-btn">12</button>
+            <button type="submit" class="day-btn">13</button>
+            <button type="submit" class="day-btn">14</button>
+    
+            <button type="submit" class="day-btn">15</button>
+            <button type="submit" class="day-btn">16</button>
+            <button type="submit" class="day-btn">17</button>
+            <button type="submit" class="day-btn">18</button>
+            <button type="submit" class="day-btn">19</button>
+            <button type="submit" class="day-btn">20</button>
+            <button type="submit" class="day-btn">21</button>
+    
+            <button type="submit" class="day-btn">22</button>
+            <button type="submit" class="day-btn">23</button>
+            <button type="submit" class="day-btn">24</button>
+            <button type="submit" class="day-btn">25</button>
+            <button type="submit" class="day-btn">26</button>
+            <button type="submit" class="day-btn">27</button>
+            <button type="submit" class="day-btn">28</button>
+    
+            <button type="submit" class="day-btn">29</button>
+            <button type="submit" class="day-btn">30</button>
+            <button type="submit" class="day-btn">31</button>
+        </form>
+    </div>
+    {% include 'components/navbar.html' with active_nav='memory' %}
+</div>
+
 
 {% endblock %}
 
