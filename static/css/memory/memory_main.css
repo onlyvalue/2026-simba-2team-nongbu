@@ -1,10 +1,8 @@
 .memory-main {
     display: flex;
-    width: 375px;
     padding: 32px 0 2px 0;
     flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
+    align-items: center;
 
     border-radius: 30px;
     border: 1px solid var(--Foundation-Violet-Normal, #1A1953);
@@ -21,4 +19,103 @@
     width: 375px;
     flex-direction: column;
     align-items: center;
+}
+
+.elements-2 {
+    display: flex;
+    width: 344px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.memory-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 29px;
+    align-self: stretch;
+}
+
+.memory-header h1 {
+    color: var(--Foundation-Violet-Normal, #1A1953);
+
+    /* Title */
+    font-family: Inter;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 38.4px */
+    letter-spacing: -0.5px;
+}
+
+.memory-header p {
+    color: var(--Foundation-Violet-Normal, #1A1953);
+    font-feature-settings: 'liga' off, 'clig' off;
+
+    /* 기본 텍스트 */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 24px */
+}
+
+.memory-list {
+    display: flex;
+    height: 571px;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    align-self: stretch;
+
+    overflow-y: auto;
+}
+
+.card {
+    display: flex;
+    width: 344px;
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+
+    border-radius: 20px;
+    border: 1px solid var(--foundation-violet-light-hover, #DDDDE5);
+    background: var(--Foundation-Violet-Light, #E8E8EE);
+}
+
+.card h3 {
+    color: var(--Foundation-Violet-Normal, #1A1953);
+
+    /* 소제목용 */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.card p {
+    color: var(--Foundation-Violet-Normal, #1A1953);
+    font-feature-settings: 'liga' off, 'clig' off;
+
+    /* 기본 텍스트 */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 24px */
+}
+
+.card span {
+    color: var(--Foundation-Violet-Normal, #1A1953);
+    font-feature-settings: 'liga' off, 'clig' off;
+
+    /* 소제목부연설명용/숫자 */
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px; /* 123.077% */
 }
