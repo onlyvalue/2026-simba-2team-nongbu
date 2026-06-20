@@ -141,7 +141,7 @@ def join_space(request):
 
             return redirect('spaces:space_main')
         else:
-            return render(request, 'home/home_join_room.html', {'error': '올바른 코드가 아닙니다. 다시 확인해주세요.'})
+            return render(request, 'home/home_join_room.html', {'error': '코드나 링크가 올바르지 않습니다'})
         
     return render(request, 'home/home_join_room.html')
 
