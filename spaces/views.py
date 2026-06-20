@@ -11,7 +11,7 @@ def home_main(request):
     
     search = request.GET.get('search', '')
 
-    spaces = Space.objects.filter(is_public=True).order_by('-created_at') # 공개 된 우주만 최신 순으로 가져오기
+    spaces = Space.objects.filter(is_public=True).order_by('-created_at')
 
     if search:
         spaces = spaces.filter(
@@ -19,10 +19,12 @@ def home_main(request):
         )
         
     active_spaces = []
+
     for space in spaces:
         end_date = space.created_at + timedelta(days=space.duration_days)
-        
-        if timezone.now() < end_date:
+        current_members = space.members.count()
+
+        if timezone.now() < end_date and current_members < space.max_capacity:
             active_spaces.append(space)
 
     # 테스트코드 ==============================
@@ -120,30 +122,68 @@ def space_create_step3(request):
         new_space.invite_token = random_token
 
         new_space.save()
+        SpaceMember.objects.create(user=request.user, space=new_space)
 
         return redirect('spaces:home_main')
     return redirect('spaces:home_create_room1')
 
 def join_space(request):
+    if not request.user.is_authenticated:
+        return redirect('accounts:login')
+
     if request.method == 'POST':
-        invite_code = request.POST.get('invite_code')
+        invite_code = request.POST.get('invite_code', '').strip().upper()
         target_space = Space.objects.filter(invite_token=invite_code).first()
         user = request.user
 
         if target_space:
+            end_date = target_space.created_at + timedelta(days=target_space.duration_days)
+
+            if timezone.now() >= end_date:
+                return render(request, 'home/home_join_room.html', {
+                    'error': '운영 기간이 종료된 우주입니다.'
+                })
+
+            if SpaceMember.objects.filter(user=user, space=target_space).exists():
+                return redirect('spaces:space_main')
+
             current_members_count = SpaceMember.objects.filter(space=target_space).count()
 
-            if not SpaceMember.objects.filter(user=user, space=target_space).exists():
-                SpaceMember.objects.create(user=user, space=target_space)
-            
             if current_members_count >= target_space.max_capacity:
-                return render(request, 'home/home_join_room.html', {'error': '이 우주는 이미 정원이 꽉 찼습니다.'})
+                return render(request, 'home/home_join_room.html', {
+                    'error': '이 우주는 이미 정원이 꽉 찼습니다.'
+                })
+
+            SpaceMember.objects.create(user=user, space=target_space)
 
             return redirect('spaces:space_main')
         else:
-            return render(request, 'home/home_join_room.html', {'error': '올바른 코드가 아닙니다. 다시 확인해주세요.'})
+            return render(request, 'home/home_join_room.html', {
+                'error': '코드나 링크가 올바르지 않습니다'
+            })
         
     return render(request, 'home/home_join_room.html')
+
+def home_room_detail(request, space_id):
+    if not request.user.is_authenticated:
+        return redirect('accounts:login')
+
+    space = get_object_or_404(Space, space_id=space_id, is_public=True)
+
+    end_date = space.created_at + timedelta(days=space.duration_days)
+
+    if timezone.now() >= end_date:
+        return redirect('spaces:home_main')
+
+    d_day = (end_date.date() - timezone.now().date()).days
+
+    current_members = space.members.count()
+
+    return render(request, 'home/home_room_detail.html', {
+        'space': space,
+        'current_members': current_members,
+        'd_day': d_day
+    })
 
 def space_main(request):
     my_spaces = Space.objects.filter(members__user=request.user)

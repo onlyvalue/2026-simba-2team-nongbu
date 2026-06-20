@@ -17,7 +17,7 @@ home_참여하기
 <div class="home-main">
     <div class="frame-1">
         <div class="top-bar">
-                <a href="{% url 'home_main' %}" class="back-button">
+                <a href="{% url 'spaces:home_main' %}" class="back-button">
                     <img src="{% static 'images/chevron-backward.svg' %}">
                 </a>
                 <p class="top-bar-title">방 정보 확인하기</p>
@@ -35,7 +35,7 @@ home_참여하기
                 </div>
                 <div class="info-item">
                     <p class="detail-title">운영 기간</p>
-                    <p class="detail-description">{{ space.duration_days }}일</p>
+                    <p class="detail-description">D-{{ d_day }}</p>
                 </div>
                 <div class="info-item">
                     <p class="detail-title">인원</p>
