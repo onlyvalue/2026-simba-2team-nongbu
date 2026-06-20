@@ -38,3 +38,13 @@ menuOverlay.addEventListener('click', () => {
     spaceMenu.classList.remove('active');
 
 });
+
+
+// ===== 업로드 =====
+
+const upLoadBtn = document.getElementById('upLoadBtn');
+
+upLoadBtn.addEventListener('click', () => {
+
+    window.location.href = "{% url 'space_upload' %}";
+})
