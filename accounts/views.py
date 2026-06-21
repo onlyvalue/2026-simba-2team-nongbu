@@ -197,5 +197,69 @@ def change_password(request):
     )
 
 def change_nickname(request):
-    return render(request, 'mypage/mypage_change_nickname.html')
-    
+    if not request.user.is_authenticated:
+        return redirect('accounts:login')
+
+    profile = Profile.objects.get(user=request.user)
+
+    if request.method == 'POST':
+        new_nickname = request.POST.get(
+            'new_nickname', ''
+        ).strip()
+
+        if not new_nickname:
+            return render(
+                request,
+                'mypage/mypage_change_nickname.html',
+                {
+                    'current_nickname': profile.nickname,
+                    'error': '닉네임을 입력해주세요'
+                }
+            )
+
+        if len(new_nickname) > 10:
+            return render(
+                request,
+                'mypage/mypage_change_nickname.html',
+                {
+                    'current_nickname': profile.nickname,
+                    'error': '닉네임은 최대 10자까지 입력 가능합니다'
+                }
+            )
+
+        duplicate_nickname = (
+            Profile.objects
+            .filter(nickname=new_nickname)
+            .exclude(user=request.user)
+            .exists()
+        )
+
+        if duplicate_nickname:
+            return render(
+                request,
+                'mypage/mypage_change_nickname.html',
+                {
+                    'current_nickname': profile.nickname,
+                    'error': '이미 사용 중인 닉네임입니다'
+                }
+            )
+
+        profile.nickname = new_nickname
+        profile.save()
+
+        return render(
+            request,
+            'mypage/mypage_change_nickname.html',
+            {
+                'current_nickname': profile.nickname,
+                'success': '닉네임이 변경되었습니다'
+            }
+        )
+
+    return render(
+        request,
+        'mypage/mypage_change_nickname.html',
+        {
+            'current_nickname': profile.nickname
+        }
+    )

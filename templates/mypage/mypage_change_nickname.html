@@ -16,7 +16,7 @@
 
 <!-- 페이지 내용: 여기부터 코딩하면됨!! main 클래스명 x -->
 <div class="nickname-main">
-    <form action="{% url 'mypage_main' %}" method="POST" class="form-box">
+    <form action="{% url 'accounts:change_nickname' %}" method="POST" class="form-box">
         {% csrf_token %}
         <div class="change-nickname">
             <p class="Large-title">닉네임 변경</p>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="form-group">
                     <label for="new-nickname">새 닉네임</label>
-                    <input id="new-nickname" type="text" name="new_nickname" placeholder="닉네임을 입력하세요" required>
+                    <input id="new-nickname" type="text" name="new_nickname" maxlength="10" placeholder="닉네임을 입력하세요" required>
                     <p class="info">최대 10자까지 입력 가능합니다</p>
                 </div>
             </div>
