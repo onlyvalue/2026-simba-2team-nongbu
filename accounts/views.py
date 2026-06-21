@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.contrib.auth import update_session_auth_hash
 from django.contrib import auth
 from django.shortcuts import render, redirect
 from .models import Profile
@@ -121,7 +122,79 @@ def delete_account(request):
     return redirect('onboarding')
     
 def change_password(request):
-    return render(request, 'mypage/mypage_change_password.html')
+    if not request.user.is_authenticated:
+        return redirect('accounts:login')
+
+    if request.method == 'POST':
+        current_password = request.POST.get(
+            'current_password', ''
+        )
+        new_password = request.POST.get(
+            'new_password', ''
+        )
+
+        if not request.user.check_password(current_password):
+            return render(
+                request,
+                'mypage/mypage_change_password.html',
+                {
+                    'current_error':
+                    '현재 비밀번호가 일치하지 않습니다'
+                }
+            )
+
+        if len(new_password) < 8:
+            return render(
+                request,
+                'mypage/mypage_change_password.html',
+                {
+                    'new_error':
+                    '비밀번호는 8자리 이상이어야 합니다'
+                }
+            )
+
+        special_chars = (
+            "!@#$%^&*()_+-=[]{};:'\",.<>/?\\|~"
+        )
+
+        has_special = False
+
+        for char in new_password:
+            if char in special_chars:
+                has_special = True
+                break
+
+        if not has_special:
+            return render(
+                request,
+                'mypage/mypage_change_password.html',
+                {
+                    'new_error':
+                    '비밀번호에는 특수문자가 포함되어야 합니다'
+                }
+            )
+
+        request.user.set_password(new_password)
+        request.user.save()
+
+        update_session_auth_hash(
+            request,
+            request.user
+        )
+
+        return render(
+            request,
+            'mypage/mypage_change_password.html',
+            {
+                'success':
+                '비밀번호가 변경되었습니다'
+            }
+        )
+
+    return render(
+        request,
+        'mypage/mypage_change_password.html'
+    )
 
 def change_nickname(request):
     return render(request, 'mypage/mypage_change_nickname.html')

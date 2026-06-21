@@ -49,7 +49,7 @@ def space_create_step1(request):
         space_keyword = request.POST.get('space_keyword', '')
 
         if len(space_name) == 0 or len(space_name) > 15 or len(space_keyword) > 15:
-            return render(request, 'home/home_create_room1.html', {'error': '조건을 확인해주세요.'})
+            return render(request, 'home/home_create_room1.html', {'error': '조건을 확인해주세요'})
         
         if space_keyword == "":
             space_keyword = space_name
@@ -73,7 +73,7 @@ def space_create_step2(request):
             return render(request, 'home/home_create_room2.html', {
                 'space_name': space_name,
                 'space_keyword': space_keyword,
-                'error': '조건을 확인해주세요.'
+                'error': '조건을 확인해주세요'
             })
         
         operation_period = int(operation_period)
@@ -83,7 +83,7 @@ def space_create_step2(request):
             return render(request, 'home/home_create_room2.html', {
                 'space_name': space_name,
                 'space_keyword': space_keyword,
-                'error': '조건을 확인해주세요.'
+                'error': '조건을 확인해주세요'
             })
 
         return render(request, 'home/home_create_room3.html', {
@@ -143,7 +143,7 @@ def join_space(request):
 
             if timezone.now() >= end_date:
                 return render(request, 'home/home_join_room.html', {
-                    'error': '운영 기간이 종료된 우주입니다.'
+                    'error': '운영 기간이 종료된 우주입니다'
                 })
 
             if SpaceMember.objects.filter(user=user, space=target_space).exists():
@@ -153,7 +153,7 @@ def join_space(request):
 
             if current_members_count >= target_space.max_capacity:
                 return render(request, 'home/home_join_room.html', {
-                    'error': '이 우주는 이미 정원이 꽉 찼습니다.'
+                    'error': '이 우주는 이미 정원이 꽉 찼습니다'
                 })
 
             SpaceMember.objects.create(user=user, space=target_space)
