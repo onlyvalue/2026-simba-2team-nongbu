@@ -114,7 +114,7 @@
 
 .calendar-box {
     width: 328px;
-    height: 244px;
+    height: auto;
     display: grid;
     grid-template-columns: repeat(7, 40px);
     justify-content: center;
@@ -133,6 +133,7 @@
     align-items: center;
     gap: 10px;
     border: none;
+    cursor: pointer;
 
     color: var(--Foundation-Violet-Normal, #1A1953);
     font-family: Inter;
@@ -142,4 +143,9 @@
     line-height: 40px;
     text-align: center;
     font-feature-settings: 'liga' off, 'clig' off;
+}
+
+.other-month {
+    opacity: 0.5;
+    cursor: default;
 }
