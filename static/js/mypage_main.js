@@ -26,7 +26,7 @@ logoutCancel.addEventListener('click', () => {
 });
 
 logoutConfirm.addEventListener('click', () => {
-    window.location.href = '/onboarding/start/';
+    window.location.href = '/account/logout/';
 });
 
 deleteBtn.addEventListener('click', () => {
@@ -38,5 +38,5 @@ deleteCancel.addEventListener('click', () => {
 });
 
 deleteConfirm.addEventListener('click', () => {
-    window.location.href = '/onboarding/start/';
+    window.location.href = '/account/delete_account/';
 });

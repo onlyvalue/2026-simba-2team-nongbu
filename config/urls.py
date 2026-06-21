@@ -16,6 +16,7 @@ from app.views import (
 from django.urls import include
 
 from spaces.views import home_main
+from accounts.views import mypage_main
 
 
 
@@ -30,10 +31,5 @@ urlpatterns = [
     path('account/', include('accounts.urls')),
     path('memory/', include('memories.urls')),
     path('space/upload/', space_upload, name='space_upload'),
-    path('mypage/password/', mypage_change_password, name='mypage_change_password'),
-    path('mypage/nickname/', mypage_change_nickname, name='mypage_change_nickname'),
-    path('mypage/logout/', mypage_logout, name='mypage_logout'),
-    path('mypage/delete/', mypage_delete_account, name='mypage_delete_account'),
-
-    
+    path('mypage/', mypage_main, name='mypage_main'),
 ]

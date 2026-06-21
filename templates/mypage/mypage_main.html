@@ -21,8 +21,12 @@
         <div class="elements-2">
             <div class="user-info">
                 <p>회원 정보</p>
-                <button>비밀번호 변경</button>
-                <button>닉네임 변경</button>
+                <button type="button" onclick="location.href='{% url 'accounts:change_password' %}'">
+                    비밀번호 변경
+                </button>
+                <button type="button" onclick="location.href='{% url 'accounts:change_nickname' %}'">
+                    닉네임 변경
+                </button>
             </div>
             <div class="more-menu">
                 <p>더보기</p>

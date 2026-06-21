@@ -103,3 +103,26 @@ def nickname_setup(request):
         return redirect('home_main')
 
     return render(request, 'auth/nickname_setup.html')
+
+def mypage_main(request):
+    # 로그인 여부 확인
+    if not request.user.is_authenticated:
+        return redirect('accounts:login')
+    context = {
+        'user': request.user,
+    }
+    
+    return render(request, 'mypage/mypage_main.html', context)
+
+def delete_account(request):
+    user = request.user
+    user.delete() 
+    logout(request) 
+    return redirect("onboarding")
+    
+def change_password(request):
+    return render(request, 'mypage/mypage_change_password.html')
+
+def change_nickname(request):
+    return render(request, 'mypage/mypage_change_nickname.html')
+    
