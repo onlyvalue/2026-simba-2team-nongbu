@@ -32,15 +32,19 @@
                                                       type="submit">중복확인</button>
                                           </div>
                                     </div>
-                                    {% if username_error %}
-                                    <p class="info">{{username_error|linebreaksbr}}</p>
-                                    {% elif username_duplicate_error %}
-                                    <p class="info">{{username_duplicate_error}}</p>
-                                    {% elif error_ischeck %}
-                                    <p class="info">{{error_ischeck}}</p>
-                                    {% elif username_success %}
-                                    <p class="info" style="color : rgb(28, 163, 253)">{{username_success}}</p>
-                                    {% endif %}
+                                    <p class="info-id">
+                                          {% if username_error %}
+                                          {{username_error|linebreaksbr}}
+                                          {% elif username_duplicate_error %}
+                                          {{username_duplicate_error}}
+                                          {% elif error_ischeck %}
+                                          {{error_ischeck}}
+                                          {% elif username_success %}
+                                          <span style="color: rgb(28, 163, 253)">
+                                                {{username_success}}
+                                          </span>
+                                          {% endif %}
+                                    </p>
                               </div>
                               <div class="form-pw">
                                     <div class="card-pw">
@@ -52,11 +56,13 @@
                                           <input id="signup-password" type="password" name="password_confirm"
                                                 placeholder="비밀번호 확인" value="{{ password_confirm|default:'' }}">
                                     </div>
-                                    {% if password_error %}
-                                    <p class="info">{{password_error}}</p>
-                                    {% elif password_confirm_error %}
-                                    <p class="info">{{password_confirm_error}}</p>
-                                    {% endif %}
+                                    <p class="info-pw">
+                                          {% if password_error %}
+                                          {{password_error}}
+                                          {% elif password_confirm_error %}
+                                          {{password_confirm_error}}
+                                          {% endif %}
+                                    </p>
                               </div>
                         </div>
 

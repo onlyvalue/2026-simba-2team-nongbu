@@ -155,7 +155,17 @@
     cursor: pointer;
 }
 
-.info {
+.info-id {
+    min-height: 48px;
+    color: #F00;
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 24px;
+}
+
+.info-pw {
+    min-height: 24px;
     color: #F00;
     font-family: Inter;
     font-size: 12px;
