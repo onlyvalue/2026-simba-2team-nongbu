@@ -177,9 +177,22 @@ def home_room_detail(request, space_id):
     if timezone.now() >= end_date:
         return redirect('spaces:home_main')
 
-    d_day = (end_date.date() - timezone.now().date()).days
-
     current_members = space.members.count()
+
+    if request.method == 'POST':
+        is_member = SpaceMember.objects.filter(user=request.user, space=space).exists()
+
+        if is_member:
+            return redirect('spaces:space_room', space_id=space.space_id)
+
+        if current_members >= space.max_capacity:
+            return redirect('spaces:home_main')
+
+        SpaceMember.objects.create(user=request.user, space=space)
+
+        return redirect('spaces:space_room', space_id=space.space_id)
+
+    d_day = (end_date.date() - timezone.now().date()).days
 
     return render(request, 'home/home_room_detail.html', {
         'space': space,
