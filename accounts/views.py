@@ -118,7 +118,7 @@ def delete_account(request):
     user = request.user
     user.delete() 
     logout(request) 
-    return redirect("onboarding")
+    return redirect('onboarding')
     
 def change_password(request):
     return render(request, 'mypage/mypage_change_password.html')

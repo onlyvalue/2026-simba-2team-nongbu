@@ -9,7 +9,7 @@ import random
 
 def home_main(request):
     if not request.user.is_authenticated:
-        return redirect('accounts:login')
+        return redirect('onboarding')
     
     search = request.GET.get('search', '')
 
