@@ -18,7 +18,7 @@
         <a href="{% url 'memories:memory_main' %}" class="back-button">
             <img src="{% static 'images/chevron-backward-white.svg' %}" alt="">
         </a>
-        <p class="top-bar-title">멋쟁이사자처럼 아기사자별자리</p>
+        <p class="top-bar-title">{{ space.name }}</p>
     </div>
     <div class="calendar-container">
         <div class="month-header">
@@ -40,19 +40,18 @@
             <span>SA</span>
         </div>
         <div class="calendar-box">
-            <input type="hidden" name="year" value="{{ current_year }}">
-            <input type="hidden" name="month" value="{{ current_month }}">
             {% for day in days_list %}
 
             {% if day.month == current_month %}
-            <a href="#" class="day-btn current-month">
+            <a href="{% url 'memories:memory_gallery' space_id=space_id %}?target_date={{ day|date:'Y-m-d' }}"
+                class="day-btn current-month">
                 {{ day.day }}
             </a>
             {% else %}
-            <!-- 이전/다음 달 날짜: 클릭 안 되게 막고, 투명도 줘서 흐릿하게 만들어줘 -->
-            <div class="day-btn other-month">
+            <a href="{% url 'memories:memory_gallery' space_id=space_id %}?target_date={{ day|date:'Y-m-d' }}"
+                class="day-btn other-month">
                 {{ day.day }}
-            </div>
+            </a>
             {% endif %}
 
             {% endfor %}

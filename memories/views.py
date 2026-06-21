@@ -29,7 +29,8 @@ def memory_main(request):
 
     return render(request, 'memory/memory_main.html', {'memories': memories})
 
-def memory_gallery_list(request):
+def memory_gallery_list(request, space_id):
+    space = get_object_or_404(Space, pk=space_id)
     today = timezone.now()
     year = int(request.GET.get('year', today.year))
     month = int(request.GET.get('month', today.month))
@@ -54,6 +55,8 @@ def memory_gallery_list(request):
             days_list.append(day) 
 
     context = {
+        'space_id': space_id,
+        'space' : space,
         'current_year': year,
         'current_month': month,
         'month_name': month_name,
@@ -96,3 +99,17 @@ def memory_constellation(request, space_id):
         'start_date': space.created_at.date(),
         'end_date': end_datetime.date(),
     })
+
+def memory_gallery(request, space_id):
+    target_date = request.GET.get('target_date')
+    
+    space = get_object_or_404(Space, pk=space_id)
+
+    memories = space.stars.filter(created_at__date=target_date)
+    context = {
+        'space': space,                
+        'selected_date': target_date,   
+        'memories': memories,          
+    }
+    
+    return render(request, 'memory/memory_gallery.html', context)

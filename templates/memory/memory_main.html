@@ -13,54 +13,29 @@
 {% block content %}
 
 <!-- 페이지 내용: 여기부터 코딩하면됨!! main 클래스명 x -->
- <div class="memory-main">
-    <div class="elements-1">
-        <div class="elements-2">
-            <div class="memory-header">
-               <h1>추억</h1>
-               <p>당신의 순간이 밤하늘의 별자리가 되었어요</p>
-            </div>
-            <div class="memory-list">
-               <a href="#" class="card">
-                  <h3>멋쟁이사자처럼 아기사자</h3>
-                  <p>아기사자들 너무 귀여워</p>
-                  <span>120일 운영</span>
-               </a>
-               <a href="#" class="card">
-                  <h3>멋쟁이사자처럼 아기사자</h3>
-                  <p>아기사자들 너무 귀여워</p>
-                  <span>120일 운영</span>
-               </a>
-               <a href="#" class="card">
-                  <h3>멋쟁이사자처럼 아기사자</h3>
-                  <p>아기사자들 너무 귀여워</p>
-                  <span>120일 운영</span>
-               </a>
-               <a href="#" class="card">
-                  <h3>멋쟁이사자처럼 아기사자</h3>
-                  <p>아기사자들 너무 귀여워</p>
-                  <span>120일 운영</span>
-               </a>
-               <a href="#" class="card">
-                  <h3>멋쟁이사자처럼 아기사자</h3>
-                  <p>아기사자들 너무 귀여워</p>
-                  <span>120일 운영</span>
-               </a>
-               <a href="#" class="card">
-                  <h3>멋쟁이사자처럼 아기사자</h3>
-                  <p>아기사자들 너무 귀여워</p>
-                  <span>120일 운영</span>
-               </a>
-               <a href="#" class="card">
-                  <h3>멋쟁이사자처럼 아기사자</h3>
-                  <p>아기사자들 너무 귀여워</p>
-                  <span>120일 운영</span>
-               </a>
-            </div>
-        </div>
-    </div>
-    {% include 'components/navbar.html' with active_nav='memory' %}
- </div>
+<div class="memory-main">
+   <div class="elements-1">
+      <div class="elements-2">
+         <div class="memory-header">
+            <h1>추억</h1>
+            <p>당신의 순간이 밤하늘의 별자리가 되었어요</p>
+         </div>
+         <div class="memory-list">
+
+            {% for space in memories %}
+            <a href="{% url 'memories:memory_constellation' space_id=space.space_id %}" class="card">
+               <h3>{{ space.name }}</h3>
+               <p>{{ space.keyword }}</p>
+               <span>{{ space.duration_days }}일 운영</span>
+            </a>
+            {% empty %}
+            <p>아직 추억으로 변한 우주방이 없습니다!</p>
+            {% endfor %}
+         </div>
+      </div>
+   </div>
+   {% include 'components/navbar.html' with active_nav='memory' %}
+</div>
 
 
 

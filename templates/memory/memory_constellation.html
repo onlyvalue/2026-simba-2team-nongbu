@@ -11,8 +11,9 @@
 {% endblock %}
 
 {% block content %}
-
-<!-- 페이지 내용: 여기부터 코딩하면됨!! main 클래스명 x -->
+<a href="{% url 'memories:memory_gallery_list' space_id=space.space_id %}">
+    테스트 별자리
+</a>
 
 {% include 'components/navbar.html' with active_nav='memory' %}
 
