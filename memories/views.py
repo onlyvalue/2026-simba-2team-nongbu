@@ -29,11 +29,11 @@ def memory_main(request):
 
     return render(request, 'memory/memory_main.html', {'memories': memories})
 
-def memory_calendar(request):
+def memory_gallery_list(request):
     today = timezone.now()
     year = int(request.GET.get('year', today.year))
     month = int(request.GET.get('month', today.month))
-    cal = calendar.Calendar(calendar.MONDAY)
+    cal = calendar.Calendar(calendar.SUNDAY)
 
     prev_month = month - 1
     prev_year = year
@@ -47,15 +47,24 @@ def memory_calendar(request):
         next_month = 1
         next_year += 1
 
-    result = [] # 최종 달력 한 주씩 2차원배열
-    for week in cal.monthdatescalendar(year, month):
-        week_list = [] 
+    month_name = calendar.month_name[month].upper()
+    days_list = []
+    for week in cal.monthdatescalendar(year, month):  
+        for day in week:                              
+            days_list.append(day) 
 
-        for day in week:
-            formatted_day = day.strftime("%d") 
-            week_list.append(formatted_day)
-
-        result.append(week_list)
+    context = {
+        'current_year': year,
+        'current_month': month,
+        'month_name': month_name,
+        'prev_year': prev_year,
+        'prev_month': prev_month,
+        'next_year': next_year,
+        'next_month': next_month,
+        'days_list': days_list,
+    }
+    return render(request, 'memory/memory_gallery_list.html', context)
+                       
 
 
 def memory_gallery(request):

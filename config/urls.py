@@ -30,7 +30,6 @@ urlpatterns = [
     path('account/', include('accounts.urls')),
     path('memory/', include('memories.urls')),
     path('space/upload/', space_upload, name='space_upload'),
-    path('memorylist/', memory_list, name='memory_list'),
     path('mypage/password/', mypage_change_password, name='mypage_change_password'),
     path('mypage/nickname/', mypage_change_nickname, name='mypage_change_nickname'),
     path('mypage/logout/', mypage_logout, name='mypage_logout'),
