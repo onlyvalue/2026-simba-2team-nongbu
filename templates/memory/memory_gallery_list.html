@@ -15,7 +15,7 @@
 <div class="memory-room space-detail">
 
     <div class="top-bar">
-        <a href="{% url 'memories:memory_main' %}" class="back-button">
+        <a href="{% url 'memories:memory_constellation' space.space_id %}" class="back-button">
             <img src="{% static 'images/chevron-backward-white.svg' %}" alt="">
         </a>
         <p class="top-bar-title">{{ space.name }}</p>
