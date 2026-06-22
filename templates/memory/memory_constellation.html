@@ -7,6 +7,7 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/memory/memory_constellation.css' %}">
+<link rel="stylesheet" href="{% static 'css/memory/memory_save_modal.css' %}">
 <link rel="stylesheet" href="{% static 'css/components/navbar.css' %}">
 {% endblock %}
 
@@ -32,15 +33,9 @@
         <img src="{% static 'images/akar-icons_arrow-back.svg' %}">
         다시 가운데로 이동
     </button>
-
-
-    <button class="share-btn" id="shareBtn">
-        <img src="{% static 'images/share-btn.svg' %}">
-    </button>
 </div>
 
 {% endblock %}
-
 
 {% block extra_js %}
 <script src="{% static 'js/memory_constellation.js' %}"></script>
