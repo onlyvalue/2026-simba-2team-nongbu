@@ -119,6 +119,8 @@ def memory_constellation(request, space_id):
             "current": current,
             "required": required,
             "data": constellation,
+            "start_date": space.created_at.strftime("%y.%m.%d"),
+            "end_date": end_datetime.strftime("%y.%m.%d"),
         })
 
         remain -= required

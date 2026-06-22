@@ -51,7 +51,7 @@
     left: 50%;
     transform: translateX(-50%);
 
-    color: var(--Foundation-Violet-Normal, #1A1953);
+    color: var(--Foundation-Violet-Light, #E8E8EE);
     text-align: center;
 
     /* 상단바용 */
@@ -178,4 +178,17 @@
 .reset-view-btn img {
     width: 18px;
     height: 18px;
+}
+
+.constellation-date {
+    padding-top: 5px;
+    color: var(--Foundation-Violet-Light, #E8E8EE);
+    text-align: center;
+
+    /* 완성별자리표시용 */
+    font-family: "Intel One Mono";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
