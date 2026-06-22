@@ -26,6 +26,7 @@
     padding-left: 13px;
     align-items: center;
     gap: 112px;
+    position: relative;
 }
 
 .back-button {
@@ -36,6 +37,10 @@
 }
 
 .top-bar-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    
     color: var(--Foundation-Violet-Normal, #1A1953);
     text-align: center;
     font-family: Inter;
