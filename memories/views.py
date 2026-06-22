@@ -74,36 +74,46 @@ def memory_gallery_list(request, space_id):
 def memory_gallery(request, space_id):
     space = get_object_or_404(Space, pk=space_id)
     target_date = request.GET.get('target_date')
-    return render(request, 'memory/memory_gallery.html', {'space': space, 'target_date': target_date})
+    memories = space.stars.all()
+
+    if target_date:
+        memories = memories.filter(created_at__date=target_date)
+    
+    memories = memories.order_by('-created_at')
+    context = {
+        'space': space,
+        'target_date': target_date,
+        'memories': memories, 
+    }
+    return render(request, 'memory/memory_gallery.html', context)
+
 
 
 def memory_constellation(request, space_id):
-    # 1. 로그인 체크
+    
     if not request.user.is_authenticated:
         return redirect('accounts:login')
 
-    # 2. 유저가 소속된 방인지 확인하며 가져오기 (보안)
+   
     space = get_object_or_404(
         Space.objects.filter(
             members__user=request.user).distinct(),
         space_id=space_id
     )
 
-    # 3. 만료일자 계산
+   
     end_datetime = space.created_at + timedelta(
         days=space.duration_days
     )
 
-    # 4. 아직 만료되지 않았다면 튕겨내기
+    
     if timezone.now() < end_datetime:
         return redirect('memories:memory_main')
 
-    # 5. 저장된 별들 가져오기
+   
     stars = space.stars.order_by('created_at')
 
-    # ==========================================
-    # 🌟 추가된 부분: 자바스크립트를 위한 별자리 계산 로직
-    # ==========================================
+
     total_memory_count = stars.count()
     remain = total_memory_count
     render_constellations = []
@@ -127,9 +137,8 @@ def memory_constellation(request, space_id):
 
         if remain <= 0:
             break
-    # ==========================================
 
-    # 6. HTML로 필요한 데이터 모두 넘기기
+   
     return render(request, 'memory/memory_constellation.html', {
         'space': space,
         'stars': stars,
