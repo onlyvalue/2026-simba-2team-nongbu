@@ -71,7 +71,8 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
-    line-height: 24px; /* 150% */
+    line-height: 24px;
+    /* 150% */
 }
 
 .join-space {
@@ -108,7 +109,7 @@
     border-radius: 8px;
     padding: 0 14px;
     border: 1px solid var(--Foundation-Violet-Light, #E8E8EE);
-    background:#F9F9F9;
+    background: #F9F9F9;
 }
 
 .input-field::placeholder {
@@ -128,7 +129,8 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 150%; /* 24px */
+    line-height: 150%;
+    /* 24px */
 }
 
 .input-description {
@@ -139,7 +141,26 @@
     font-size: 13px;
     font-style: normal;
     font-weight: 400;
-    line-height: 16px; /* 123.077% */
+    line-height: 16px;
+    /* 123.077% */
+}
+
+.error-code {
+    display: flex;
+    height: 24px;
+    align-items: center;
+    gap: 5px;
+    align-self: stretch;
+}
+
+.error-message {
+    color: #F00;
+
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 24px;
 }
 
 .next-btn {

@@ -29,14 +29,17 @@ home_참여하기
                               <div class="join-space">
                                     <div class="input-group">
                                           <p class="input-label">우주 참여하기</p>
-                                          <input class="input-field" name="invite_code" placeholder="받은 코드 또는 링크를 입력하세요">
+                                          <input class="input-field" name="invite_code"
+                                                placeholder="받은 코드 또는 링크를 입력하세요">
                                     </div>
                                     <p class="input-description">친구한테 코드 또는 링크를 받으세요</p>
                                     {% if error %}
-                                    <p class="error-message">
+                                    <div class="error-code">
                                           <img src="{% static 'images/ph_warning-circle-thin-red.svg' %}" alt="error">
-                                          {{ error }}
-                                    </p>
+                                          <p class="error-message">
+                                                {{ error }}
+                                          </p>
+                                    </div>
                                     {% endif %}
                               </div>
                               <button type="submit" class="primary-btn next-btn">다음</button>

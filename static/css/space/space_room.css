@@ -52,7 +52,7 @@
     left: 50%;
     transform: translateX(-50%);
 
-    color: var(--Foundation-Violet-Normal, #1A1953);
+    color: var(--Foundation-Violet-Light, #E8E8EE);
     text-align: center;
 
     /* 상단바용 */
