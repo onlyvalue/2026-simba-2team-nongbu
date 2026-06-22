@@ -23,12 +23,12 @@
             <div class="frame-1">
                 <div class="now-nickname">
                     <p>현재 닉네임</p>
-                    <div class="my-name">이채은</div>
+                    <div class="my-name">{{ current_nickname }}</div>
                 </div>
                 <div class="form-group">
                     <label for="new-nickname">새 닉네임</label>
-                    <input id="new-nickname" type="text" name="new_nickname" maxlength="10" placeholder="닉네임을 입력하세요" required>
-                    <p class="info">최대 10자까지 입력 가능합니다</p>
+                    <input id="new-nickname" type="text" name="new_nickname" maxlength="10" placeholder="닉네임을 입력하세요">
+                    <p class="info">{{ error }}</p>
                 </div>
             </div>
         </div>

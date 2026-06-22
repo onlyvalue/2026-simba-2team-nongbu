@@ -125,6 +125,7 @@
 }
 
 .info {
+    min-height: 24px;
     color: #FF5B5B;
 
     font-family: Inter;
