@@ -33,8 +33,9 @@
         <img src="{% static 'images/akar-icons_arrow-back.svg' %}">
         다시 가운데로 이동
     </button>
-    
-    <button class="share-btn" id="shareBtn">
+
+    <button class="share-btn" id="shareBtn"
+        onclick="location.href='{% url 'memories:memory_gallery_list' space_id=space.space_id %}'">
         <img src="{% static 'images/share-btn.svg' %}">
     </button>
 

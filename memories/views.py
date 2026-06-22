@@ -71,8 +71,10 @@ def memory_gallery_list(request, space_id):
                        
 
 
-def memory_gallery(request):
-    return render(request, 'memory/memory_gallery.html')
+def memory_gallery(request, space_id):
+    space = get_object_or_404(Space, pk=space_id)
+    target_date = request.GET.get('target_date')
+    return render(request, 'memory/memory_gallery.html', {'space': space, 'target_date': target_date})
 
 
 def memory_constellation(request, space_id):
