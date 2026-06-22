@@ -37,7 +37,7 @@
 
     border-radius: 40px;
 
-    background: rgba(221, 221, 229, 0.9);
+    background: rgba(221, 221, 229, 0.25);
 
     opacity: 0;
     visibility: hidden;
@@ -48,7 +48,7 @@
 }
 
 .space-menu.active {
-    opacity: 0.5;
+    opacity: 1;
     visibility: visible;
 }
 
@@ -68,9 +68,9 @@ a.menu-item {
 
     padding-bottom: 8px;
 
-    border-bottom: 1px solid #1A1953;
+    border-bottom: 1px solid white;
 
-    color: #09091D;
+    color: white;
     text-align: center;
 
     font-family: Inter;
@@ -89,7 +89,7 @@ a.menu-item {
 }
 
 .menu-title {
-    color: #09091D;
+    color: white;
     text-align: center;
 
     font-family: Inter;
@@ -98,7 +98,7 @@ a.menu-item {
 }
 
 .menu-content {
-    color: #09091D;
+    color: white;
     text-align: center;
 
     font-family: Inter;

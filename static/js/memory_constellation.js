@@ -10,7 +10,7 @@ constellations.forEach(item => {
 
     const stars = item.data.stars;
     const lines = item.data.lines;
-    const currentStarCount = item.current;
+    const currentStarCount = item.required; // 임시테스트 코드 바꿔야함 const currentStarCount = item.current;
 
     const offsetX = item.data.world_x;
     const offsetY = item.data.world_y;
@@ -135,10 +135,6 @@ constellations.forEach(item => {
     info.innerHTML = `
         <div class="constellation-name">
             ${item.name}
-        </div>
-
-        <div class="constellation-progress">
-            ${item.current}/${item.required}
         </div>
     `;
 

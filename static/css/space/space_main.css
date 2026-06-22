@@ -105,7 +105,6 @@
 }
 
 .empty-state {
-    padding-left: 85px;
     height: 100%;
     display: flex;
     flex-direction: column;
