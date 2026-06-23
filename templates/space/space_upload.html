@@ -17,7 +17,7 @@
 <div class="space-main">
     <div class="elements-1">
         <div class="top-bar">
-            <a href="javascript:history.back()" class="back-button">
+            <a href="{% url 'spaces:space_room' space.space_id %}" class="back-button">
                 <img src="{% static 'images/chevron-backward.svg' %}">
             </a>
             <p class="top-bar-title">{{ space.name }}</p>
@@ -47,7 +47,7 @@
             <button type="submit" class="primary-btn upload-btn">업로드</button>
         </form>
     </div>
-    
+
     {% if error %}
     <div class="error" id="errorMsg">
         <p>
