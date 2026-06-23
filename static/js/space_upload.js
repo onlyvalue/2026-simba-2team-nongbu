@@ -31,13 +31,15 @@ imageInput.addEventListener("change", function () {
 });
 
 // 하루 1개 제한
-    setTimeout(() => {
-        const errorMsg = document.getElementById('errorMsg');
-        if (errorMsg) {
-            errorMsg.classList.add('hide');
+const errorMsg = document.getElementById('errorMsg');
 
-            setTimeout(() => {
-                errorMsg.style.display = 'none';
-            }, 400);
-        }
-    }, 500);
+if (errorMsg) {
+    setTimeout(() => {
+        errorMsg.classList.add('hide');
+
+        setTimeout(() => {
+            errorMsg.remove();
+        }, 500);
+
+    }, 1500);
+}

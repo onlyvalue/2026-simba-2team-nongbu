@@ -46,16 +46,15 @@
 
             <button type="submit" class="primary-btn upload-btn">업로드</button>
         </form>
-
-
     </div>
+    
+    {% if error %}
     <div class="error" id="errorMsg">
-        {% if error %}
         <p>
-            {{error}}
+            {{ error }}
         </p>
-        {% endif %}
     </div>
+    {% endif %}
 </div>
 
 

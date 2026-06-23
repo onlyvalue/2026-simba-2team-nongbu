@@ -23,7 +23,7 @@ def create(request, space_id):
             if already_uploaded_today:
                 return render(request, 'space/space_upload.html', {
                     'space':space,
-                    'error': '오늘은 이미 기록을 남기셨네요 :)'
+                    'error': '오늘은 이미 기록을 남기셨네요 :)',
                 })
 
         new_star = Star()
@@ -47,5 +47,26 @@ def new_star(request, space_id):
     if not is_member:
         return redirect('spaces:space_room', space_id=space_id)
     
-    return render(request, 'space/space_upload.html', {'space': space})
+    error = None
+
+    if space.record_limit == 'once':
+        today = timezone.localdate()
+
+        already_uploaded_today = Star.objects.filter(
+            space=space,
+            user=request.user,
+            created_at__date=today
+        ).exists()
+
+        if already_uploaded_today:
+            error = '오늘은 이미 기록을 남기셨네요 :)'
+    
+    return render(
+    request,
+    'space/space_upload.html',
+    {
+        'space': space,
+        'error': error,
+    }
+)
 

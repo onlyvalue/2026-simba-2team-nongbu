@@ -17,6 +17,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    
 }
 
 .top-bar {
@@ -43,6 +44,8 @@
 
     position: relative;
     z-index: 101;
+
+    user-select: none;
 }
 
 .top-bar-title {
@@ -61,6 +64,8 @@
     font-weight: 600;
     line-height: 24px;
     /* 150% */
+
+    user-select: none;
 }
 
 .share-btn {
@@ -191,4 +196,37 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+}
+
+#backgroundStars {
+    position: absolute;
+    inset: 0;
+
+    overflow: hidden;
+
+    z-index: 0;
+    pointer-events: none;
+}
+
+.bg-star {
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+    background: white;
+
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+
+    0%,100%{
+        opacity: 0.2;
+    }
+
+    50%{
+        opacity: 1;
+    }
 }

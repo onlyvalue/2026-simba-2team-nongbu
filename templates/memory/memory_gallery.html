@@ -31,7 +31,7 @@
 
                 {% for memory in memories %}
                 <div class="gallery-card">
-                    <p class="nickname">{{ memory.user.nickname }}</p>
+                    <p class="nickname">{{ memory.user.profile.nickname }}</p>
                     <img src="{{ memory.image.url }}" class="gallery-image">
                     <p class="content">{{ memory.content }}</p>
                 </div>
