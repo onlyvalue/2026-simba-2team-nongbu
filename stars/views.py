@@ -23,7 +23,7 @@ def create(request, space_id):
             if already_uploaded_today:
                 return render(request, 'space/space_upload.html', {
                     'space':space,
-                    'error': '오늘은 이미 기록을 남겼습니다'
+                    'error': '오늘은 이미 기록을 남기셨네요 :)'
                 })
 
         new_star = Star()
